@@ -8,61 +8,74 @@ from crewai import Task
 from tools import create_calculator_tool, create_rag_tool, create_web_search_tool
 
 
+from crewai import Task
+
 def create_planning_task(agent) -> Task:
-    """Task 1 placeholder: draft an execution plan."""
+    """Task 1: Draft a personalized travel itinerary plan."""
     return Task(
         description=(
-            "Add description for Task 1."
-            # "Analyze the workshop topic '{topic}' and craft a milestone-based execution plan. "
-            # "List required assets, responsible roles, tooling, and a realistic timeline."
+            "Analyze the user's travel preferences, budget, and trip duration. "
+            "Create a milestone-based itinerary structured into morning, afternoon, and evening activities. "
+            "Include transport modes, distances, estimated times, cultural experiences, hidden gems, local food, and free attractions. "
+            "Account for weather, season, and user interests."
         ),
         expected_output=(
-            "Add expected output for Task 1."
-            # "A structured plan including objectives, three to five milestones, resource requirements, "
-            # "risk mitigation ideas, and success metrics."
+            "A structured, actionable travel plan with 3–5 milestones (e.g., Day 1, Day 2, Day 3), "
+            "complete with timings, locations, travel durations, recommended meals, and notable experiences. "
+            "Should be practical, budget-friendly, and optimized for maximum enjoyment."
         ),
         agent=agent,
-        name="Task 1",  # "Planning"
+        name="Travel Planning",  # Task name
     )
 
 
+
 def create_research_task(agent, tools=None) -> Task:
-    """Task 2 placeholder: gather supporting research."""
+    """Task 2: Light travel research for itinerary planning."""
+
+    # Fallback tools (safe & minimal)
     tools = list(tools) if tools is not None else [
-        create_rag_tool(),
-        create_web_search_tool(),
+        create_web_search_tool(),  # RAG removed for speed
         create_calculator_tool(),
     ]
+
     return Task(
         description=(
-            "Add description for Task 2."
-            # "Use the local knowledge base and live web results to validate the plan for '{topic}'. "
-            # "Cite at least three trustworthy sources and capture data points that justify each milestone."
+            "Collect short and reliable travel information for the selected destination. "
+            "Focus ONLY on: best season to visit, 2 key attractions, 1 local food suggestion, "
+            "and typical cost range for budget travelers."
         ),
         expected_output=(
-            "Add expected output for Task 2."
-            # "A bullet list of insights with inline citations, key statistics, and references to the RAG documents."
+            "A short bullet list including:\n"
+            "Best visiting season\n"
+            "2 recommended attractions (with short notes)\n"
+            "1 local food or cultural experience\n"
+            "Approximate budget range (e.g. $200–$350)\n"
+            "*Do not provide citations—only concise facts.*"
         ),
         agent=agent,
         tools=tools,
-        name="Task 2",  # "Research"
+        name="Quick Travel Research",
     )
 
 
 def create_writing_task(agent) -> Task:
-    """Task 3 placeholder: author deliverables."""
+    """Task: Author travel deliverables for the Travel Writer / Concierge Agent."""
     return Task(
+        name="Travel Itinerary Authoring",
         description=(
-            "Add description for Task 3."
-            # "Draft the workshop narrative for '{topic}', including an overview, prerequisites, step-by-step labs, and deployment notes. "
-            # "Incorporate the research insights and calculator results where helpful."
+            "Using the provided travel outlines and research, create detailed, user-friendly travel itineraries. "
+            "Include day-by-day schedules, suggested activities, booking and packing checklists, and concise local tips. "
+            "Ensure the output is clear, actionable, and easy to follow for travelers of all experience levels."
         ),
         expected_output=(
-            "Add expected output for Task 3."
-            # "A Markdown-formatted workshop guide with sections for Goals, Agenda, Hands-on Labs, Deployment, and Resources."
+            "A polished, Markdown-formatted travel guide including:\n"
+            "- Day-by-day itinerary with activities and timings\n"
+            "- Booking checklist for accommodations, transport, and tours\n"
+            "- Packing checklist tailored to the destination and planned activities\n"
+            "- Concise, practical local tips (restaurants, attractions, cultural advice)"
         ),
         agent=agent,
-        name="Task 3",  # "Writing"
     )
 
 

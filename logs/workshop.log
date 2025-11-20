@@ -1,0 +1,2873 @@
+2025-11-20 12:16:28 | INFO | __main__ | Starting workshop pipeline for topic: Agentic AI Workshop on Robotics Deployments
+2025-11-20 12:16:28 | INFO | crew | Crew kickoff started for topic: Agentic AI Workshop on Robotics Deployments (provider=openrouter-liteLLM model=meta-llama/llama-3.3-70b-instruct:free base_url=https://openrouter.ai/api/v1)
+2025-11-20 12:16:28 | INFO | LiteLLM | 
+LiteLLM completion() model= meta-llama/llama-3.3-70b-instruct:free; provider = openrouter
+2025-11-20 12:16:29 | ERROR | crew | Crew run failed on attempt 1/2 with overrides {}
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 208, in _make_common_sync_call
+    response = sync_httpx_client.post(
+        url=api_base,
+    ...<8 lines>...
+        logging_obj=logging_obj,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 898, in post
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 880, in post
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://openrouter.ai/api/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\main.py", line 2747, in completion
+    response = base_llm_http_handler.completion(
+        model=model,
+    ...<14 lines>...
+        client=client,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 511, in completion
+    response = self._make_common_sync_call(
+        sync_httpx_client=sync_httpx_client,
+    ...<7 lines>...
+        logging_obj=logging_obj,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 233, in _make_common_sync_call
+    raise self._handle_error(e=e, provider_config=provider_config)
+          ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 3582, in _handle_error
+    raise provider_config.get_error_class(
+    ...<3 lines>...
+    )
+litellm.llms.openrouter.common_utils.OpenRouterException: {"error":{"message":"No auth credentials found","code":401}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 157, in run_workshop_pipeline
+    result = _execute_crew(topic, overrides, config)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 117, in _execute_crew
+    result = crew.kickoff(inputs={"topic": topic})
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\crew.py", line 706, in kickoff
+    result = self._run_sequential_process()
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\crew.py", line 823, in _run_sequential_process
+    return self._execute_tasks(self.tasks)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\crew.py", line 931, in _execute_tasks
+    task_output = task.execute_sync(
+        agent=agent_to_use,
+        context=context,
+        tools=tools_for_task,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\task.py", line 458, in execute_sync
+    return self._execute_core(agent, context, tools)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\task.py", line 591, in _execute_core
+    raise e  # Re-raise the exception after emitting the event
+    ^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\task.py", line 522, in _execute_core
+    result = agent.execute_task(
+        task=self,
+        context=context,
+        tools=tools,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 514, in execute_task
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 490, in execute_task
+    result = self._execute_without_timeout(task_prompt, task)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 598, in _execute_without_timeout
+    return self.agent_executor.invoke(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        {
+        ^
+    ...<4 lines>...
+        }
+        ^
+    )["output"]
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 188, in invoke
+    formatted_answer = self._invoke_loop()
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 287, in _invoke_loop
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 229, in _invoke_loop
+    answer = get_llm_response(
+        llm=self.llm,
+    ...<6 lines>...
+        executor_context=self,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\utilities\agent_utils.py", line 276, in get_llm_response
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\utilities\agent_utils.py", line 268, in get_llm_response
+    answer = llm.call(
+        messages,
+    ...<3 lines>...
+        response_model=response_model,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\llm.py", line 1317, in call
+    return self._handle_non_streaming_response(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        params=params,
+        ^^^^^^^^^^^^^^
+    ...<4 lines>...
+        response_model=response_model,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\llm.py", line 1077, in _handle_non_streaming_response
+    response = litellm.completion(**params)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\utils.py", line 1381, in wrapper
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\utils.py", line 1250, in wrapper
+    result = original_function(*args, **kwargs)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\main.py", line 3772, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2328, in exception_type
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2199, in exception_type
+    raise AuthenticationError(
+    ...<5 lines>...
+    )
+litellm.exceptions.AuthenticationError: litellm.AuthenticationError: AuthenticationError: OpenrouterException - {"error":{"message":"No auth credentials found","code":401}}
+2025-11-20 12:16:30 | INFO | crew | Attempt 2/2 using overrides: {'provider': 'openai', 'model': 'meta-llama/llama-3.3-70b-instruct:free', 'default_headers': '[set]', 'extra_headers': '[set]'}
+2025-11-20 12:16:32 | INFO | crew | Crew kickoff started for topic: Agentic AI Workshop on Robotics Deployments (provider=openai model=meta-llama/llama-3.3-70b-instruct:free base_url=https://openrouter.ai/api/v1)
+2025-11-20 12:16:33 | ERROR | root | OpenAI API call failed: Error code: 401 - {'error': {'message': 'No auth credentials found', 'code': 401}}
+2025-11-20 12:16:33 | ERROR | root | OpenAI API call failed: Error code: 401 - {'error': {'message': 'No auth credentials found', 'code': 401}}
+2025-11-20 12:16:34 | ERROR | root | OpenAI API call failed: Error code: 401 - {'error': {'message': 'No auth credentials found', 'code': 401}}
+2025-11-20 12:16:34 | ERROR | root | OpenAI API call failed: Error code: 401 - {'error': {'message': 'No auth credentials found', 'code': 401}}
+2025-11-20 12:16:34 | ERROR | root | OpenAI API call failed: Error code: 401 - {'error': {'message': 'No auth credentials found', 'code': 401}}
+2025-11-20 12:16:34 | ERROR | root | OpenAI API call failed: Error code: 401 - {'error': {'message': 'No auth credentials found', 'code': 401}}
+2025-11-20 12:16:34 | ERROR | crew | Crew run failed on attempt 2/2 with overrides {'provider': 'openai', 'model': 'meta-llama/llama-3.3-70b-instruct:free', 'default_headers': '[set]', 'extra_headers': '[set]'}
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 157, in run_workshop_pipeline
+    result = _execute_crew(topic, overrides, config)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 117, in _execute_crew
+    result = crew.kickoff(inputs={"topic": topic})
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\crew.py", line 706, in kickoff
+    result = self._run_sequential_process()
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\crew.py", line 823, in _run_sequential_process
+    return self._execute_tasks(self.tasks)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\crew.py", line 931, in _execute_tasks
+    task_output = task.execute_sync(
+        agent=agent_to_use,
+        context=context,
+        tools=tools_for_task,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\task.py", line 458, in execute_sync
+    return self._execute_core(agent, context, tools)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\task.py", line 591, in _execute_core
+    raise e  # Re-raise the exception after emitting the event
+    ^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\task.py", line 522, in _execute_core
+    result = agent.execute_task(
+        task=self,
+        context=context,
+        tools=tools,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 526, in execute_task
+    result = self.execute_task(task, context, tools)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 526, in execute_task
+    result = self.execute_task(task, context, tools)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 525, in execute_task
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 490, in execute_task
+    result = self._execute_without_timeout(task_prompt, task)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 598, in _execute_without_timeout
+    return self.agent_executor.invoke(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        {
+        ^
+    ...<4 lines>...
+        }
+        ^
+    )["output"]
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 188, in invoke
+    formatted_answer = self._invoke_loop()
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 299, in _invoke_loop
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 229, in _invoke_loop
+    answer = get_llm_response(
+        llm=self.llm,
+    ...<6 lines>...
+        executor_context=self,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\utilities\agent_utils.py", line 276, in get_llm_response
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\utilities\agent_utils.py", line 268, in get_llm_response
+    answer = llm.call(
+        messages,
+    ...<3 lines>...
+        response_model=response_model,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\llms\providers\openai\completion.py", line 196, in call
+    return self._handle_completion(
+           ~~~~~~~~~~~~~~~~~~~~~~~^
+        params=completion_params,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        response_model=response_model,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\llms\providers\openai\completion.py", line 414, in _handle_completion
+    raise e from e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\llms\providers\openai\completion.py", line 330, in _handle_completion
+    response: ChatCompletion = self.client.chat.completions.create(**params)
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\openai\_utils\_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1189, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\openai\_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\openai\_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'No auth credentials found', 'code': 401}}
+2025-11-20 12:22:01 | INFO | __main__ | Starting workshop pipeline for topic: Agentic AI Workshop on Robotics Deployments
+2025-11-20 12:22:01 | INFO | crew | Crew kickoff started for topic: Agentic AI Workshop on Robotics Deployments (provider=openrouter-liteLLM model=meta-llama/llama-3.3-70b-instruct:free base_url=https://openrouter.ai/api/v1)
+2025-11-20 12:22:01 | INFO | LiteLLM | 
+LiteLLM completion() model= meta-llama/llama-3.3-70b-instruct:free; provider = openrouter
+2025-11-20 12:22:03 | ERROR | crew | Crew run failed on attempt 1/2 with overrides {}
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 208, in _make_common_sync_call
+    response = sync_httpx_client.post(
+        url=api_base,
+    ...<8 lines>...
+        logging_obj=logging_obj,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 898, in post
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 880, in post
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://openrouter.ai/api/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\main.py", line 2747, in completion
+    response = base_llm_http_handler.completion(
+        model=model,
+    ...<14 lines>...
+        client=client,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 511, in completion
+    response = self._make_common_sync_call(
+        sync_httpx_client=sync_httpx_client,
+    ...<7 lines>...
+        logging_obj=logging_obj,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 233, in _make_common_sync_call
+    raise self._handle_error(e=e, provider_config=provider_config)
+          ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 3582, in _handle_error
+    raise provider_config.get_error_class(
+    ...<3 lines>...
+    )
+litellm.llms.openrouter.common_utils.OpenRouterException: {"error":{"message":"No auth credentials found","code":401}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 157, in run_workshop_pipeline
+    result = _execute_crew(topic, overrides, config)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 117, in _execute_crew
+    result = crew.kickoff(inputs={"topic": topic})
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\crew.py", line 706, in kickoff
+    result = self._run_sequential_process()
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\crew.py", line 823, in _run_sequential_process
+    return self._execute_tasks(self.tasks)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\crew.py", line 931, in _execute_tasks
+    task_output = task.execute_sync(
+        agent=agent_to_use,
+        context=context,
+        tools=tools_for_task,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\task.py", line 458, in execute_sync
+    return self._execute_core(agent, context, tools)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\task.py", line 591, in _execute_core
+    raise e  # Re-raise the exception after emitting the event
+    ^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\task.py", line 522, in _execute_core
+    result = agent.execute_task(
+        task=self,
+        context=context,
+        tools=tools,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 514, in execute_task
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 490, in execute_task
+    result = self._execute_without_timeout(task_prompt, task)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 598, in _execute_without_timeout
+    return self.agent_executor.invoke(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        {
+        ^
+    ...<4 lines>...
+        }
+        ^
+    )["output"]
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 188, in invoke
+    formatted_answer = self._invoke_loop()
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 287, in _invoke_loop
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 229, in _invoke_loop
+    answer = get_llm_response(
+        llm=self.llm,
+    ...<6 lines>...
+        executor_context=self,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\utilities\agent_utils.py", line 276, in get_llm_response
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\utilities\agent_utils.py", line 268, in get_llm_response
+    answer = llm.call(
+        messages,
+    ...<3 lines>...
+        response_model=response_model,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\llm.py", line 1317, in call
+    return self._handle_non_streaming_response(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        params=params,
+        ^^^^^^^^^^^^^^
+    ...<4 lines>...
+        response_model=response_model,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\llm.py", line 1077, in _handle_non_streaming_response
+    response = litellm.completion(**params)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\utils.py", line 1381, in wrapper
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\utils.py", line 1250, in wrapper
+    result = original_function(*args, **kwargs)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\main.py", line 3772, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2328, in exception_type
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2199, in exception_type
+    raise AuthenticationError(
+    ...<5 lines>...
+    )
+litellm.exceptions.AuthenticationError: litellm.AuthenticationError: AuthenticationError: OpenrouterException - {"error":{"message":"No auth credentials found","code":401}}
+2025-11-20 12:22:03 | INFO | crew | Attempt 2/2 using overrides: {'provider': 'openai', 'model': 'meta-llama/llama-3.3-70b-instruct:free', 'default_headers': '[set]', 'extra_headers': '[set]'}
+2025-11-20 12:22:06 | INFO | crew | Crew kickoff started for topic: Agentic AI Workshop on Robotics Deployments (provider=openai model=meta-llama/llama-3.3-70b-instruct:free base_url=https://openrouter.ai/api/v1)
+2025-11-20 12:22:06 | ERROR | root | OpenAI API call failed: Error code: 401 - {'error': {'message': 'No auth credentials found', 'code': 401}}
+2025-11-20 12:22:06 | ERROR | root | OpenAI API call failed: Error code: 401 - {'error': {'message': 'No auth credentials found', 'code': 401}}
+2025-11-20 12:22:07 | ERROR | root | OpenAI API call failed: Error code: 401 - {'error': {'message': 'No auth credentials found', 'code': 401}}
+2025-11-20 12:22:07 | ERROR | root | OpenAI API call failed: Error code: 401 - {'error': {'message': 'No auth credentials found', 'code': 401}}
+2025-11-20 12:22:07 | ERROR | root | OpenAI API call failed: Error code: 401 - {'error': {'message': 'No auth credentials found', 'code': 401}}
+2025-11-20 12:22:07 | ERROR | root | OpenAI API call failed: Error code: 401 - {'error': {'message': 'No auth credentials found', 'code': 401}}
+2025-11-20 12:22:07 | ERROR | crew | Crew run failed on attempt 2/2 with overrides {'provider': 'openai', 'model': 'meta-llama/llama-3.3-70b-instruct:free', 'default_headers': '[set]', 'extra_headers': '[set]'}
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 157, in run_workshop_pipeline
+    result = _execute_crew(topic, overrides, config)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 117, in _execute_crew
+    result = crew.kickoff(inputs={"topic": topic})
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\crew.py", line 706, in kickoff
+    result = self._run_sequential_process()
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\crew.py", line 823, in _run_sequential_process
+    return self._execute_tasks(self.tasks)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\crew.py", line 931, in _execute_tasks
+    task_output = task.execute_sync(
+        agent=agent_to_use,
+        context=context,
+        tools=tools_for_task,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\task.py", line 458, in execute_sync
+    return self._execute_core(agent, context, tools)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\task.py", line 591, in _execute_core
+    raise e  # Re-raise the exception after emitting the event
+    ^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\task.py", line 522, in _execute_core
+    result = agent.execute_task(
+        task=self,
+        context=context,
+        tools=tools,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 526, in execute_task
+    result = self.execute_task(task, context, tools)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 526, in execute_task
+    result = self.execute_task(task, context, tools)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 525, in execute_task
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 490, in execute_task
+    result = self._execute_without_timeout(task_prompt, task)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 598, in _execute_without_timeout
+    return self.agent_executor.invoke(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        {
+        ^
+    ...<4 lines>...
+        }
+        ^
+    )["output"]
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 188, in invoke
+    formatted_answer = self._invoke_loop()
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 299, in _invoke_loop
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 229, in _invoke_loop
+    answer = get_llm_response(
+        llm=self.llm,
+    ...<6 lines>...
+        executor_context=self,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\utilities\agent_utils.py", line 276, in get_llm_response
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\utilities\agent_utils.py", line 268, in get_llm_response
+    answer = llm.call(
+        messages,
+    ...<3 lines>...
+        response_model=response_model,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\llms\providers\openai\completion.py", line 196, in call
+    return self._handle_completion(
+           ~~~~~~~~~~~~~~~~~~~~~~~^
+        params=completion_params,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        response_model=response_model,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\llms\providers\openai\completion.py", line 414, in _handle_completion
+    raise e from e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\llms\providers\openai\completion.py", line 330, in _handle_completion
+    response: ChatCompletion = self.client.chat.completions.create(**params)
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\openai\_utils\_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1189, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\openai\_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\openai\_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'No auth credentials found', 'code': 401}}
+2025-11-20 12:24:33 | INFO | __main__ | Starting workshop pipeline for topic: Agentic AI Workshop on Robotics Deployments
+2025-11-20 12:24:33 | INFO | crew | Crew kickoff started for topic: Agentic AI Workshop on Robotics Deployments (provider=openrouter-liteLLM model=meta-llama/llama-3.3-70b-instruct:free base_url=https://openrouter.ai/api/v1)
+2025-11-20 12:24:33 | INFO | LiteLLM | 
+LiteLLM completion() model= meta-llama/llama-3.3-70b-instruct:free; provider = openrouter
+2025-11-20 12:24:35 | ERROR | crew | Crew run failed on attempt 1/2 with overrides {}
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 208, in _make_common_sync_call
+    response = sync_httpx_client.post(
+        url=api_base,
+    ...<8 lines>...
+        logging_obj=logging_obj,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\llms\custom_httpx\http_handler.py", line 898, in post
+    raise e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\llms\custom_httpx\http_handler.py", line 880, in post
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://openrouter.ai/api/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\main.py", line 2747, in completion
+    response = base_llm_http_handler.completion(
+        model=model,
+    ...<14 lines>...
+        client=client,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 511, in completion
+    response = self._make_common_sync_call(
+        sync_httpx_client=sync_httpx_client,
+    ...<7 lines>...
+        logging_obj=logging_obj,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 233, in _make_common_sync_call
+    raise self._handle_error(e=e, provider_config=provider_config)
+          ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 3582, in _handle_error
+    raise provider_config.get_error_class(
+    ...<3 lines>...
+    )
+litellm.llms.openrouter.common_utils.OpenRouterException: {"error":{"message":"No auth credentials found","code":401}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 157, in run_workshop_pipeline
+    result = _execute_crew(topic, overrides, config)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 117, in _execute_crew
+    result = crew.kickoff(inputs={"topic": topic})
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\crew.py", line 706, in kickoff
+    result = self._run_sequential_process()
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\crew.py", line 823, in _run_sequential_process
+    return self._execute_tasks(self.tasks)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\crew.py", line 931, in _execute_tasks
+    task_output = task.execute_sync(
+        agent=agent_to_use,
+        context=context,
+        tools=tools_for_task,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\task.py", line 458, in execute_sync
+    return self._execute_core(agent, context, tools)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\task.py", line 591, in _execute_core
+    raise e  # Re-raise the exception after emitting the event
+    ^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\task.py", line 522, in _execute_core
+    result = agent.execute_task(
+        task=self,
+        context=context,
+        tools=tools,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agent\core.py", line 514, in execute_task
+    raise e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agent\core.py", line 490, in execute_task
+    result = self._execute_without_timeout(task_prompt, task)
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agent\core.py", line 598, in _execute_without_timeout
+    return self.agent_executor.invoke(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        {
+        ^
+    ...<4 lines>...
+        }
+        ^
+    )["output"]
+    ^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agents\crew_agent_executor.py", line 188, in invoke
+    formatted_answer = self._invoke_loop()
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agents\crew_agent_executor.py", line 287, in _invoke_loop
+    raise e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agents\crew_agent_executor.py", line 229, in _invoke_loop
+    answer = get_llm_response(
+        llm=self.llm,
+    ...<6 lines>...
+        executor_context=self,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\utilities\agent_utils.py", line 276, in get_llm_response
+    raise e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\utilities\agent_utils.py", line 268, in get_llm_response
+    answer = llm.call(
+        messages,
+    ...<3 lines>...
+        response_model=response_model,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\llm.py", line 1317, in call
+    return self._handle_non_streaming_response(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        params=params,
+        ^^^^^^^^^^^^^^
+    ...<4 lines>...
+        response_model=response_model,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\llm.py", line 1077, in _handle_non_streaming_response
+    response = litellm.completion(**params)
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\utils.py", line 1381, in wrapper
+    raise e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\utils.py", line 1250, in wrapper
+    result = original_function(*args, **kwargs)
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\main.py", line 3772, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2328, in exception_type
+    raise e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2199, in exception_type
+    raise AuthenticationError(
+    ...<5 lines>...
+    )
+litellm.exceptions.AuthenticationError: litellm.AuthenticationError: AuthenticationError: OpenrouterException - {"error":{"message":"No auth credentials found","code":401}}
+2025-11-20 12:24:35 | INFO | crew | Attempt 2/2 using overrides: {'provider': 'openai', 'model': 'meta-llama/llama-3.3-70b-instruct:free', 'default_headers': '[set]', 'extra_headers': '[set]'}
+2025-11-20 12:24:38 | INFO | crew | Crew kickoff started for topic: Agentic AI Workshop on Robotics Deployments (provider=openai model=meta-llama/llama-3.3-70b-instruct:free base_url=https://openrouter.ai/api/v1)
+2025-11-20 12:24:39 | ERROR | root | OpenAI API call failed: Error code: 401 - {'error': {'message': 'No auth credentials found', 'code': 401}}
+2025-11-20 12:24:39 | ERROR | root | OpenAI API call failed: Error code: 401 - {'error': {'message': 'No auth credentials found', 'code': 401}}
+2025-11-20 12:24:39 | ERROR | root | OpenAI API call failed: Error code: 401 - {'error': {'message': 'No auth credentials found', 'code': 401}}
+2025-11-20 12:24:39 | ERROR | root | OpenAI API call failed: Error code: 401 - {'error': {'message': 'No auth credentials found', 'code': 401}}
+2025-11-20 12:24:39 | ERROR | root | OpenAI API call failed: Error code: 401 - {'error': {'message': 'No auth credentials found', 'code': 401}}
+2025-11-20 12:24:39 | ERROR | root | OpenAI API call failed: Error code: 401 - {'error': {'message': 'No auth credentials found', 'code': 401}}
+2025-11-20 12:24:39 | ERROR | crew | Crew run failed on attempt 2/2 with overrides {'provider': 'openai', 'model': 'meta-llama/llama-3.3-70b-instruct:free', 'default_headers': '[set]', 'extra_headers': '[set]'}
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 157, in run_workshop_pipeline
+    result = _execute_crew(topic, overrides, config)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 117, in _execute_crew
+    result = crew.kickoff(inputs={"topic": topic})
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\crew.py", line 706, in kickoff
+    result = self._run_sequential_process()
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\crew.py", line 823, in _run_sequential_process
+    return self._execute_tasks(self.tasks)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\crew.py", line 931, in _execute_tasks
+    task_output = task.execute_sync(
+        agent=agent_to_use,
+        context=context,
+        tools=tools_for_task,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\task.py", line 458, in execute_sync
+    return self._execute_core(agent, context, tools)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\task.py", line 591, in _execute_core
+    raise e  # Re-raise the exception after emitting the event
+    ^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\task.py", line 522, in _execute_core
+    result = agent.execute_task(
+        task=self,
+        context=context,
+        tools=tools,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agent\core.py", line 526, in execute_task
+    result = self.execute_task(task, context, tools)
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agent\core.py", line 526, in execute_task
+    result = self.execute_task(task, context, tools)
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agent\core.py", line 525, in execute_task
+    raise e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agent\core.py", line 490, in execute_task
+    result = self._execute_without_timeout(task_prompt, task)
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agent\core.py", line 598, in _execute_without_timeout
+    return self.agent_executor.invoke(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        {
+        ^
+    ...<4 lines>...
+        }
+        ^
+    )["output"]
+    ^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agents\crew_agent_executor.py", line 188, in invoke
+    formatted_answer = self._invoke_loop()
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agents\crew_agent_executor.py", line 299, in _invoke_loop
+    raise e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agents\crew_agent_executor.py", line 229, in _invoke_loop
+    answer = get_llm_response(
+        llm=self.llm,
+    ...<6 lines>...
+        executor_context=self,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\utilities\agent_utils.py", line 276, in get_llm_response
+    raise e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\utilities\agent_utils.py", line 268, in get_llm_response
+    answer = llm.call(
+        messages,
+    ...<3 lines>...
+        response_model=response_model,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\llms\providers\openai\completion.py", line 196, in call
+    return self._handle_completion(
+           ~~~~~~~~~~~~~~~~~~~~~~~^
+        params=completion_params,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        response_model=response_model,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\llms\providers\openai\completion.py", line 414, in _handle_completion
+    raise e from e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\llms\providers\openai\completion.py", line 330, in _handle_completion
+    response: ChatCompletion = self.client.chat.completions.create(**params)
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\openai\_utils\_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\openai\resources\chat\completions\completions.py", line 1189, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\openai\_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\openai\_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'No auth credentials found', 'code': 401}}
+2025-11-20 12:29:21 | INFO | __main__ | Starting workshop pipeline for topic: Agentic AI Workshop on Robotics Deployments
+2025-11-20 12:29:21 | INFO | crew | Crew kickoff started for topic: Agentic AI Workshop on Robotics Deployments (provider=openrouter-liteLLM model=meta-llama/llama-3.3-70b-instruct:free base_url=https://openrouter.ai/api/v1)
+2025-11-20 12:29:21 | INFO | LiteLLM | 
+LiteLLM completion() model= meta-llama/llama-3.3-70b-instruct:free; provider = openrouter
+2025-11-20 12:57:36 | INFO | __main__ | Starting workshop pipeline for topic: Agentic AI Workshop on Robotics Deployments
+2025-11-20 12:57:36 | INFO | crew | Crew kickoff started for topic: Agentic AI Workshop on Robotics Deployments (provider=openrouter-liteLLM model=meta-llama/llama-3.3-70b-instruct:free base_url=https://openrouter.ai/api/v1)
+2025-11-20 12:57:36 | INFO | LiteLLM | 
+LiteLLM completion() model= meta-llama/llama-3.3-70b-instruct:free; provider = openrouter
+2025-11-20 12:57:43 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 12:58:23 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: cpu
+2025-11-20 12:58:23 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-11-20 12:58:33 | INFO | faiss.loader | Loading faiss with AVX2 support.
+2025-11-20 12:58:34 | INFO | faiss.loader | Successfully loaded faiss with AVX2 support.
+2025-11-20 12:58:34 | INFO | tools.rag_tool | Loaded FAISS vector store from C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\rag\vectorstore using embedding model sentence-transformers/all-MiniLM-L6-v2
+2025-11-20 12:58:34 | INFO | tools.rag_tool | Local RAG served 4 snippets for query 'task description and expected output'
+2025-11-20 12:58:34 | INFO | LiteLLM | 
+LiteLLM completion() model= meta-llama/llama-3.3-70b-instruct:free; provider = openrouter
+2025-11-20 12:58:38 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 12:58:38 | INFO | tools.web_search | DuckDuckGo search for query: Task 1 description and expected output
+2025-11-20 12:58:39 | INFO | primp | response: https://www.bing.com/search?q=Task+1+description+and+expected+output 200
+2025-11-20 12:58:39 | INFO | LiteLLM | 
+LiteLLM completion() model= meta-llama/llama-3.3-70b-instruct:free; provider = openrouter
+2025-11-20 12:58:58 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 12:58:58 | INFO | LiteLLM | 
+LiteLLM completion() model= meta-llama/llama-3.3-70b-instruct:free; provider = openrouter
+2025-11-20 12:59:18 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 12:59:18 | INFO | LiteLLM | 
+LiteLLM completion() model= meta-llama/llama-3.3-70b-instruct:free; provider = openrouter
+2025-11-20 12:59:45 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 12:59:46 | INFO | LiteLLM | 
+LiteLLM completion() model= meta-llama/llama-3.3-70b-instruct:free; provider = openrouter
+2025-11-20 13:00:03 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 13:00:04 | INFO | crew | Task 'Task 1' output:
+Task 1: Introduction to Agentic Workflows
+-----------------------------------------
+In this task, you will learn about the basics of agentic workflows and how to design and implement them using CrewAI. You will also learn about the different components of an agentic workflow, including agents, tasks, and tools.
+
+Expected Output:
+- A written description of an agentic workflow and its components
+- A diagram or illustration of an agentic workflow
+- A list of potential applications of agentic workflows
+2025-11-20 13:00:04 | INFO | crew | Task 'Task 2' output:
+Task 2: Advanced Agent Interactions in Agentic Workflows
+-----------------------------------------
+In this task, you will delve into the complexities of agent interactions within agentic workflows. You will learn how to design and implement advanced interaction protocols, facilitating more efficient and effective collaboration among agents. This task will cover topics such as conflict resolution, resource allocation, and communication strategies.
+
+Expected Output:
+- A detailed report on the importance of advanced agent interactions in agentic workflows
+- A design document outlining a novel agent interaction protocol
+- A simulated demonstration of the implemented protocol, showcasing its benefits and potential applications
+
+This task builds upon the foundational knowledge of agentic workflows acquired in Task 1, introducing students to the nuances of agent cooperation and competition, and how these interactions can be leveraged to achieve complex goals.
+2025-11-20 13:00:04 | INFO | crew | Task 'Task 3' output:
+Task 3: Optimization and Real-World Applications of Agentic Workflows
+-----------------------------------------
+In this task, you will apply the knowledge and skills acquired in Task 1 and Task 2 to optimize agentic workflows for real-world applications. You will learn about various optimization techniques, such as machine learning and genetic algorithms, and how to apply them to improve the efficiency and effectiveness of agentic workflows. You will also explore real-world case studies and scenarios where agentic workflows can be applied, identifying potential benefits and challenges.
+
+Expected Output:
+- A written report on the optimization techniques used in agentic workflows, including their advantages and limitations
+- A design document outlining an optimized agentic workflow for a specific real-world application
+- A simulated demonstration or case study of the optimized agentic workflow, highlighting its potential benefits and challenges
+- A reflective essay on the potential impact of agentic workflows on various industries and domains, including future directions for research and development.
+2025-11-20 13:00:04 | INFO | crew | Task 'Task 4' output:
+Task 4: Evaluation and Refinement of Agentic Workflows
+-----------------------------------------
+In this task, you will learn how to evaluate and refine agentic workflows to improve their performance and efficiency. You will learn about various evaluation metrics and techniques, such as simulation-based evaluation, empirical evaluation, and analytical evaluation. You will also learn how to refine agentic workflows using techniques such as workflow optimization, agent adaptation, and human-in-the-loop refinement.
+
+Expected Output:
+- A written report on the evaluation metrics and techniques used in agentic workflows, including their advantages and limitations
+- A design document outlining a refined agentic workflow for a specific application
+- A simulated demonstration or case study of the refined agentic workflow, highlighting its improved performance and efficiency
+- A reflective essay on the importance of evaluation and refinement in agentic workflows, including future directions for research and development.
+2025-11-20 13:00:04 | INFO | crew | Crew completed with final output length=1025 characters
+2025-11-20 13:07:14 | INFO | main | Starting workshop pipeline for topic: Designing a Multi-Agent Workshop for Cloud-Native Deployments
+2025-11-20 13:07:15 | INFO | crew | Crew kickoff started for topic: Designing a Multi-Agent Workshop for Cloud-Native Deployments (provider=openrouter-liteLLM model=meta-llama/llama-3.3-70b-instruct:free base_url=https://openrouter.ai/api/v1)
+2025-11-20 13:07:15 | INFO | LiteLLM | 
+LiteLLM completion() model= meta-llama/llama-3.3-70b-instruct:free; provider = openrouter
+2025-11-20 13:07:22 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 13:07:34 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: cpu
+2025-11-20 13:07:34 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-11-20 13:07:49 | INFO | faiss.loader | Loading faiss with AVX2 support.
+2025-11-20 13:07:49 | INFO | faiss.loader | Successfully loaded faiss with AVX2 support.
+2025-11-20 13:07:49 | INFO | tools.rag_tool | Loaded FAISS vector store from C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\rag\vectorstore using embedding model sentence-transformers/all-MiniLM-L6-v2
+2025-11-20 13:07:50 | INFO | tools.rag_tool | Local RAG served 4 snippets for query 'Task 1 description'
+2025-11-20 13:07:50 | INFO | LiteLLM | 
+LiteLLM completion() model= meta-llama/llama-3.3-70b-instruct:free; provider = openrouter
+2025-11-20 13:08:52 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 13:08:52 | INFO | LiteLLM | 
+LiteLLM completion() model= meta-llama/llama-3.3-70b-instruct:free; provider = openrouter
+2025-11-20 13:09:29 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 13:09:29 | INFO | LiteLLM | 
+LiteLLM completion() model= meta-llama/llama-3.3-70b-instruct:free; provider = openrouter
+2025-11-20 13:10:14 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 13:10:14 | INFO | LiteLLM | 
+LiteLLM completion() model= meta-llama/llama-3.3-70b-instruct:free; provider = openrouter
+2025-11-20 13:11:07 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 13:11:07 | INFO | crew | Task 'Task 1' output:
+Task 1: Introduction to Agentic Workflows and CrewAI Basics
+Expected Output: 
+- Define the concept of agentic workflows and their application in AI systems
+- Explain the basics of CrewAI and its role in building multi-agent systems
+- Describe the key components of CrewAI, including tools, tasks, and sequential or parallel processes
+- Provide examples of how CrewAI can be used to build specialized agents with shared tools and tasks.
+2025-11-20 13:11:07 | INFO | crew | Task 'Task 2' output:
+Task 2: Building Specialized Agents with CrewAI
+Expected Output: 
+- Describe how to design and build specialized agents using CrewAI
+- Explain how to assign tools and tasks to agents and manage their interactions
+- Provide examples of how CrewAI can be used to build complex multi-agent systems
+- Discuss the challenges and limitations of building specialized agents with CrewAI and potential solutions.
+2025-11-20 13:11:07 | INFO | crew | Task 'Task 3' output:
+Task 3: Deploying and Managing Multi-Agent Systems
+Expected Output: 
+- Describe the process of deploying and managing multi-agent systems built with CrewAI
+- Explain the challenges and considerations of scaling up multi-agent systems
+- Discuss the importance of monitoring and debugging multi-agent systems
+- Provide examples of how to optimize the performance of multi-agent systems and ensure their reliability and security.
+2025-11-20 13:11:07 | INFO | crew | Task 'Task 4' output:
+Task 4: Advanced Applications and Future Directions of CrewAI
+Expected Output: 
+- Discuss the potential applications of CrewAI in various industries and domains, including but not limited to robotics, healthcare, finance, smart homes, transportation, and environmental monitoring
+- Explore the integration of CrewAI with other technologies such as machine learning, distributed computing, and the Internet of Things (IoT)
+- Examine the ethical considerations and implications of advanced multi-agent systems, including autonomy, privacy, security, and explainability
+- Provide speculative insights into the future of CrewAI and multi-agent systems, including potential breakthroughs, challenges, and research directions up to and beyond the year 2028.
+2025-11-20 13:11:07 | INFO | crew | Crew completed with final output length=751 characters
+2025-11-20 14:43:14 | INFO | __main__ | Starting workshop pipeline for topic: Agentic AI Workshop on Robotics Deployments
+2025-11-20 14:43:14 | INFO | crew | Crew kickoff started for topic: Agentic AI Workshop on Robotics Deployments (provider=openrouter-liteLLM model=meta-llama/llama-3.3-70b-instruct:free base_url=https://openrouter.ai/api/v1)
+2025-11-20 14:43:14 | INFO | LiteLLM | 
+LiteLLM completion() model= meta-llama/llama-3.3-70b-instruct:free; provider = openrouter
+2025-11-20 14:43:23 | ERROR | crew | Crew run failed on attempt 1/2 with overrides {}
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\main.py", line 2747, in completion
+    response = base_llm_http_handler.completion(
+        model=model,
+    ...<14 lines>...
+        client=client,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 522, in completion
+    return provider_config.transform_response(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<9 lines>...
+        json_mode=json_mode,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\llms\openrouter\chat\transformation.py", line 181, in transform_response
+    model_response = super().transform_response(
+        model=model,
+    ...<9 lines>...
+        json_mode=json_mode,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\llms\openai\chat\gpt_transformation.py", line 636, in transform_response
+    final_response_obj = convert_to_model_response_object(
+        response_object=completion_response,
+    ...<2 lines>...
+        _response_headers=raw_response_headers,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\litellm_core_utils\llm_response_utils\convert_dict_to_response.py", line 454, in convert_to_model_response_object
+    raise raised_exception
+Exception
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 157, in run_workshop_pipeline
+    result = _execute_crew(topic, overrides, config)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 117, in _execute_crew
+    result = crew.kickoff(inputs={"topic": topic})
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\crew.py", line 706, in kickoff
+    result = self._run_sequential_process()
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\crew.py", line 823, in _run_sequential_process
+    return self._execute_tasks(self.tasks)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\crew.py", line 931, in _execute_tasks
+    task_output = task.execute_sync(
+        agent=agent_to_use,
+        context=context,
+        tools=tools_for_task,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\task.py", line 458, in execute_sync
+    return self._execute_core(agent, context, tools)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\task.py", line 591, in _execute_core
+    raise e  # Re-raise the exception after emitting the event
+    ^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\task.py", line 522, in _execute_core
+    result = agent.execute_task(
+        task=self,
+        context=context,
+        tools=tools,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 514, in execute_task
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 490, in execute_task
+    result = self._execute_without_timeout(task_prompt, task)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 598, in _execute_without_timeout
+    return self.agent_executor.invoke(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        {
+        ^
+    ...<4 lines>...
+        }
+        ^
+    )["output"]
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 188, in invoke
+    formatted_answer = self._invoke_loop()
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 287, in _invoke_loop
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 229, in _invoke_loop
+    answer = get_llm_response(
+        llm=self.llm,
+    ...<6 lines>...
+        executor_context=self,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\utilities\agent_utils.py", line 276, in get_llm_response
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\utilities\agent_utils.py", line 268, in get_llm_response
+    answer = llm.call(
+        messages,
+    ...<3 lines>...
+        response_model=response_model,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\llm.py", line 1317, in call
+    return self._handle_non_streaming_response(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        params=params,
+        ^^^^^^^^^^^^^^
+    ...<4 lines>...
+        response_model=response_model,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\llm.py", line 1077, in _handle_non_streaming_response
+    response = litellm.completion(**params)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\utils.py", line 1381, in wrapper
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\utils.py", line 1250, in wrapper
+    result = original_function(*args, **kwargs)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\main.py", line 3772, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2328, in exception_type
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2190, in exception_type
+    raise BadRequestError(
+    ...<5 lines>...
+    )
+litellm.exceptions.BadRequestError: litellm.BadRequestError: OpenrouterException - Provider returned error
+2025-11-20 14:43:23 | INFO | crew | Attempt 2/2 using overrides: {'provider': 'openai', 'model': 'meta-llama/llama-3.3-70b-instruct:free', 'default_headers': '[set]', 'extra_headers': '[set]'}
+2025-11-20 14:43:26 | INFO | crew | Crew kickoff started for topic: Agentic AI Workshop on Robotics Deployments (provider=openai model=meta-llama/llama-3.3-70b-instruct:free base_url=https://openrouter.ai/api/v1)
+2025-11-20 14:44:30 | INFO | root | OpenAI API usage: {'prompt_tokens': 449, 'completion_tokens': 388, 'total_tokens': 837}
+2025-11-20 14:44:38 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: cpu
+2025-11-20 14:44:38 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-11-20 14:44:45 | INFO | faiss.loader | Loading faiss with AVX2 support.
+2025-11-20 14:44:45 | INFO | faiss.loader | Successfully loaded faiss with AVX2 support.
+2025-11-20 14:44:45 | INFO | tools.rag_tool | Loaded FAISS vector store from C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\rag\vectorstore using embedding model sentence-transformers/all-MiniLM-L6-v2
+2025-11-20 14:44:45 | INFO | tools.rag_tool | Local RAG served 4 snippets for query 'Task 1 description'
+2025-11-20 14:45:25 | INFO | root | OpenAI API usage: {'prompt_tokens': 841, 'completion_tokens': 272, 'total_tokens': 1113}
+2025-11-20 14:45:25 | INFO | tools.rag_tool | Local RAG served 4 snippets for query 'agentic workflows and CrewAI basics'
+2025-11-20 20:43:47 | INFO | __main__ | Starting workshop pipeline for topic: Agentic AI Workshop on Robotics Deployments
+2025-11-20 20:43:47 | ERROR | crew | Crew run failed on attempt 1/2 with overrides {}
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 157, in run_workshop_pipeline
+    result = _execute_crew(topic, overrides, config)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 106, in _execute_crew
+    crew = create_workshop_crew(llm_overrides=overrides)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 29, in create_workshop_crew
+    planner = create_planner_agent(tools=planner_tools, llm_overrides=llm_overrides)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\agents\planner.py", line 37, in create_planner_agent
+    llm=build_crewai_llm(llm_overrides or {}),
+        ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+TypeError: build_crewai_llm() takes 0 positional arguments but 1 was given
+2025-11-20 20:43:47 | INFO | crew | Attempt 2/2 using overrides: {'provider': 'openai', 'model': 'meta-llama/llama-3.3-70b-instruct:free', 'default_headers': '[set]', 'extra_headers': '[set]'}
+2025-11-20 20:43:47 | ERROR | crew | Crew run failed on attempt 2/2 with overrides {'provider': 'openai', 'model': 'meta-llama/llama-3.3-70b-instruct:free', 'default_headers': '[set]', 'extra_headers': '[set]'}
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 157, in run_workshop_pipeline
+    result = _execute_crew(topic, overrides, config)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 106, in _execute_crew
+    crew = create_workshop_crew(llm_overrides=overrides)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 29, in create_workshop_crew
+    planner = create_planner_agent(tools=planner_tools, llm_overrides=llm_overrides)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\agents\planner.py", line 37, in create_planner_agent
+    llm=build_crewai_llm(llm_overrides or {}),
+        ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+TypeError: build_crewai_llm() takes 0 positional arguments but 1 was given
+2025-11-20 20:49:13 | INFO | __main__ | Starting workshop pipeline for topic: Agentic AI Workshop on Robotics Deployments
+2025-11-20 20:49:14 | INFO | crew | Crew kickoff started for topic: Agentic AI Workshop on Robotics Deployments (provider=openrouter-liteLLM model=meta-llama/llama-3.3-70b-instruct:free base_url=https://openrouter.ai/api/v1)
+2025-11-20 20:49:14 | INFO | LiteLLM | 
+LiteLLM completion() model= meta-llama/llama-3.3-70b-instruct:free; provider = openrouter
+2025-11-20 20:50:32 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 20:50:32 | INFO | LiteLLM | 
+LiteLLM completion() model= meta-llama/llama-3.3-70b-instruct:free; provider = openrouter
+2025-11-20 20:52:36 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 20:52:36 | INFO | LiteLLM | 
+LiteLLM completion() model= meta-llama/llama-3.3-70b-instruct:free; provider = openrouter
+2025-11-20 20:53:03 | ERROR | crew | Crew run failed on attempt 1/2 with overrides {}
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_sync\http11.py", line 136, in handle_request
+    raise exc
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_sync\http11.py", line 106, in handle_request
+    ) = self._receive_response_headers(**kwargs)
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_sync\http11.py", line 177, in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_sync\http11.py", line 217, in _receive_event
+    data = self._network_stream.read(
+        self.READ_NUM_BYTES, timeout=timeout
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_backends\sync.py", line 126, in read
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ReadError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 208, in _make_common_sync_call
+    response = sync_httpx_client.post(
+        url=api_base,
+    ...<8 lines>...
+        logging_obj=logging_obj,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 900, in post
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 879, in post
+    response = self.client.send(req, stream=stream)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ReadError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\main.py", line 2747, in completion
+    response = base_llm_http_handler.completion(
+        model=model,
+    ...<14 lines>...
+        client=client,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 511, in completion
+    response = self._make_common_sync_call(
+        sync_httpx_client=sync_httpx_client,
+    ...<7 lines>...
+        logging_obj=logging_obj,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 235, in _make_common_sync_call
+    raise self._handle_error(e=e, provider_config=provider_config)
+          ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 3582, in _handle_error
+    raise provider_config.get_error_class(
+    ...<3 lines>...
+    )
+litellm.llms.openrouter.common_utils.OpenRouterException: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 157, in run_workshop_pipeline
+    result = _execute_crew(topic, overrides, config)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 117, in _execute_crew
+    result = crew.kickoff(inputs={"topic": topic})
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\crew.py", line 706, in kickoff
+    result = self._run_sequential_process()
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\crew.py", line 823, in _run_sequential_process
+    return self._execute_tasks(self.tasks)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\crew.py", line 931, in _execute_tasks
+    task_output = task.execute_sync(
+        agent=agent_to_use,
+        context=context,
+        tools=tools_for_task,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\task.py", line 458, in execute_sync
+    return self._execute_core(agent, context, tools)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\task.py", line 591, in _execute_core
+    raise e  # Re-raise the exception after emitting the event
+    ^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\task.py", line 522, in _execute_core
+    result = agent.execute_task(
+        task=self,
+        context=context,
+        tools=tools,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 514, in execute_task
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 490, in execute_task
+    result = self._execute_without_timeout(task_prompt, task)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 598, in _execute_without_timeout
+    return self.agent_executor.invoke(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        {
+        ^
+    ...<4 lines>...
+        }
+        ^
+    )["output"]
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 188, in invoke
+    formatted_answer = self._invoke_loop()
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 287, in _invoke_loop
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 229, in _invoke_loop
+    answer = get_llm_response(
+        llm=self.llm,
+    ...<6 lines>...
+        executor_context=self,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\utilities\agent_utils.py", line 276, in get_llm_response
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\utilities\agent_utils.py", line 268, in get_llm_response
+    answer = llm.call(
+        messages,
+    ...<3 lines>...
+        response_model=response_model,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\llm.py", line 1317, in call
+    return self._handle_non_streaming_response(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        params=params,
+        ^^^^^^^^^^^^^^
+    ...<4 lines>...
+        response_model=response_model,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\llm.py", line 1077, in _handle_non_streaming_response
+    response = litellm.completion(**params)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\utils.py", line 1381, in wrapper
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\utils.py", line 1250, in wrapper
+    result = original_function(*args, **kwargs)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\main.py", line 3772, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2328, in exception_type
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2261, in exception_type
+    raise APIError(
+    ...<6 lines>...
+    )
+litellm.exceptions.APIError: litellm.APIError: APIError: OpenrouterException - [WinError 10054] An existing connection was forcibly closed by the remote host
+2025-11-20 20:53:03 | INFO | crew | Attempt 2/2 using overrides: {'provider': 'openai', 'model': 'meta-llama/llama-3.3-70b-instruct:free', 'default_headers': '[set]', 'extra_headers': '[set]'}
+2025-11-20 20:53:08 | INFO | crew | Crew kickoff started for topic: Agentic AI Workshop on Robotics Deployments (provider=openai model=meta-llama/llama-3.3-70b-instruct:free base_url=https://openrouter.ai/api/v1)
+2025-11-20 20:53:10 | ERROR | crewai.telemetry.telemetry | HTTPSConnectionPool(host='telemetry.crewai.com', port=4319): Read timed out. (read timeout=29.999990701675415)
+2025-11-20 20:53:15 | ERROR | crewai.telemetry.telemetry | HTTPSConnectionPool(host='telemetry.crewai.com', port=4319): Max retries exceeded with url: /v1/traces (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000021D8FCB4190>: Failed to resolve 'telemetry.crewai.com' ([Errno 11001] getaddrinfo failed)"))
+2025-11-20 20:53:20 | INFO | openai._base_client | Retrying request to /chat/completions in 0.485080 seconds
+2025-11-20 20:53:30 | INFO | openai._base_client | Retrying request to /chat/completions in 0.996123 seconds
+2025-11-20 20:53:41 | ERROR | root | Failed to connect to OpenAI API: Request timed out.
+2025-11-20 20:53:41 | ERROR | root | OpenAI API call failed: Failed to connect to OpenAI API: Request timed out.
+2025-11-20 20:58:08 | INFO | root | OpenAI API usage: {'prompt_tokens': 606, 'completion_tokens': 788, 'total_tokens': 1394}
+2025-11-20 20:58:08 | INFO | tools.web_search | DuckDuckGo search for query: top travel destinations for culture and food
+2025-11-20 20:58:18 | INFO | duckduckgo_search.DDGS | Error to search using bing backend: https://www.bing.com/search RuntimeError: error sending request for url (https://www.bing.com/search?q=top+travel+destinations+for+culture+and+food): operation timed out
+
+Caused by:
+    operation timed out
+2025-11-20 20:58:18 | ERROR | tools.web_search | DuckDuckGo search failed for 'top travel destinations for culture and food'
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectTimeout: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\openai\_base_client.py", line 982, in request
+    response = self._client.send(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectTimeout: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\llms\providers\openai\completion.py", line 330, in _handle_completion
+    response: ChatCompletion = self.client.chat.completions.create(**params)
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\openai\_utils\_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1189, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\openai\_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\openai\_base_client.py", line 1000, in request
+    raise APITimeoutError(request=request) from err
+openai.APITimeoutError: Request timed out.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 490, in execute_task
+    result = self._execute_without_timeout(task_prompt, task)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 598, in _execute_without_timeout
+    return self.agent_executor.invoke(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        {
+        ^
+    ...<4 lines>...
+        }
+        ^
+    )["output"]
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 188, in invoke
+    formatted_answer = self._invoke_loop()
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 299, in _invoke_loop
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 229, in _invoke_loop
+    answer = get_llm_response(
+        llm=self.llm,
+    ...<6 lines>...
+        executor_context=self,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\utilities\agent_utils.py", line 276, in get_llm_response
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\utilities\agent_utils.py", line 268, in get_llm_response
+    answer = llm.call(
+        messages,
+    ...<3 lines>...
+        response_model=response_model,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\llms\providers\openai\completion.py", line 196, in call
+    return self._handle_completion(
+           ~~~~~~~~~~~~~~~~~~~~~~~^
+        params=completion_params,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        response_model=response_model,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\llms\providers\openai\completion.py", line 402, in _handle_completion
+    raise ConnectionError(error_msg) from e
+ConnectionError: Failed to connect to OpenAI API: Request timed out.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\tools\web_search.py", line 59, in _search
+    iterator = ddgs.text(query, max_results=self.max_results)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\duckduckgo_search\duckduckgo_search.py", line 198, in text
+    raise DuckDuckGoSearchException(err)
+duckduckgo_search.exceptions.DuckDuckGoSearchException: https://www.bing.com/search RuntimeError: error sending request for url (https://www.bing.com/search?q=top+travel+destinations+for+culture+and+food): operation timed out
+
+Caused by:
+    operation timed out
+2025-11-20 20:58:19 | INFO | tools.web_search | DuckDuckGo search for query: top travel destinations for culture and food
+2025-11-20 20:58:29 | INFO | duckduckgo_search.DDGS | Error to search using bing backend: https://www.bing.com/search RuntimeError: error sending request for url (https://www.bing.com/search?q=top+travel+destinations+for+culture+and+food): operation timed out
+
+Caused by:
+    operation timed out
+2025-11-20 20:58:29 | ERROR | tools.web_search | DuckDuckGo search failed for 'top travel destinations for culture and food'
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectTimeout: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\openai\_base_client.py", line 982, in request
+    response = self._client.send(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectTimeout: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\llms\providers\openai\completion.py", line 330, in _handle_completion
+    response: ChatCompletion = self.client.chat.completions.create(**params)
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\openai\_utils\_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1189, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\openai\_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\openai\_base_client.py", line 1000, in request
+    raise APITimeoutError(request=request) from err
+openai.APITimeoutError: Request timed out.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 490, in execute_task
+    result = self._execute_without_timeout(task_prompt, task)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 598, in _execute_without_timeout
+    return self.agent_executor.invoke(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        {
+        ^
+    ...<4 lines>...
+        }
+        ^
+    )["output"]
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 188, in invoke
+    formatted_answer = self._invoke_loop()
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 299, in _invoke_loop
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 229, in _invoke_loop
+    answer = get_llm_response(
+        llm=self.llm,
+    ...<6 lines>...
+        executor_context=self,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\utilities\agent_utils.py", line 276, in get_llm_response
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\utilities\agent_utils.py", line 268, in get_llm_response
+    answer = llm.call(
+        messages,
+    ...<3 lines>...
+        response_model=response_model,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\llms\providers\openai\completion.py", line 196, in call
+    return self._handle_completion(
+           ~~~~~~~~~~~~~~~~~~~~~~~^
+        params=completion_params,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        response_model=response_model,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\llms\providers\openai\completion.py", line 402, in _handle_completion
+    raise ConnectionError(error_msg) from e
+ConnectionError: Failed to connect to OpenAI API: Request timed out.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\tools\web_search.py", line 59, in _search
+    iterator = ddgs.text(query, max_results=self.max_results)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\duckduckgo_search\duckduckgo_search.py", line 198, in text
+    raise DuckDuckGoSearchException(err)
+duckduckgo_search.exceptions.DuckDuckGoSearchException: https://www.bing.com/search RuntimeError: error sending request for url (https://www.bing.com/search?q=top+travel+destinations+for+culture+and+food): operation timed out
+
+Caused by:
+    operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\tools\tool_usage.py", line 265, in _use
+    result = tool.invoke(input=arguments)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\tools\structured_tool.py", line 272, in invoke
+    result = self.func(**parsed_args, **kwargs)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\tools\web_search.py", line 29, in _run
+    results = self._search(query)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\tools\web_search.py", line 63, in _search
+    raise ValueError(f"DuckDuckGo search failed: {exc}") from exc
+ValueError: DuckDuckGo search failed: https://www.bing.com/search RuntimeError: error sending request for url (https://www.bing.com/search?q=top+travel+destinations+for+culture+and+food): operation timed out
+
+Caused by:
+    operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\tools\web_search.py", line 59, in _search
+    iterator = ddgs.text(query, max_results=self.max_results)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\duckduckgo_search\duckduckgo_search.py", line 198, in text
+    raise DuckDuckGoSearchException(err)
+duckduckgo_search.exceptions.DuckDuckGoSearchException: https://www.bing.com/search RuntimeError: error sending request for url (https://www.bing.com/search?q=top+travel+destinations+for+culture+and+food): operation timed out
+
+Caused by:
+    operation timed out
+2025-11-20 20:58:29 | INFO | tools.web_search | DuckDuckGo search for query: top travel destinations for culture and food
+2025-11-20 20:58:39 | INFO | duckduckgo_search.DDGS | Error to search using bing backend: https://www.bing.com/search RuntimeError: error sending request for url (https://www.bing.com/search?q=top+travel+destinations+for+culture+and+food): operation timed out
+
+Caused by:
+    operation timed out
+2025-11-20 20:58:39 | ERROR | tools.web_search | DuckDuckGo search failed for 'top travel destinations for culture and food'
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectTimeout: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\openai\_base_client.py", line 982, in request
+    response = self._client.send(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectTimeout: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\llms\providers\openai\completion.py", line 330, in _handle_completion
+    response: ChatCompletion = self.client.chat.completions.create(**params)
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\openai\_utils\_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1189, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\openai\_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\openai\_base_client.py", line 1000, in request
+    raise APITimeoutError(request=request) from err
+openai.APITimeoutError: Request timed out.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 490, in execute_task
+    result = self._execute_without_timeout(task_prompt, task)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 598, in _execute_without_timeout
+    return self.agent_executor.invoke(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        {
+        ^
+    ...<4 lines>...
+        }
+        ^
+    )["output"]
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 188, in invoke
+    formatted_answer = self._invoke_loop()
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 299, in _invoke_loop
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 229, in _invoke_loop
+    answer = get_llm_response(
+        llm=self.llm,
+    ...<6 lines>...
+        executor_context=self,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\utilities\agent_utils.py", line 276, in get_llm_response
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\utilities\agent_utils.py", line 268, in get_llm_response
+    answer = llm.call(
+        messages,
+    ...<3 lines>...
+        response_model=response_model,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\llms\providers\openai\completion.py", line 196, in call
+    return self._handle_completion(
+           ~~~~~~~~~~~~~~~~~~~~~~~^
+        params=completion_params,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        response_model=response_model,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\llms\providers\openai\completion.py", line 402, in _handle_completion
+    raise ConnectionError(error_msg) from e
+ConnectionError: Failed to connect to OpenAI API: Request timed out.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\tools\web_search.py", line 59, in _search
+    iterator = ddgs.text(query, max_results=self.max_results)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\duckduckgo_search\duckduckgo_search.py", line 198, in text
+    raise DuckDuckGoSearchException(err)
+duckduckgo_search.exceptions.DuckDuckGoSearchException: https://www.bing.com/search RuntimeError: error sending request for url (https://www.bing.com/search?q=top+travel+destinations+for+culture+and+food): operation timed out
+
+Caused by:
+    operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\tools\tool_usage.py", line 265, in _use
+    result = tool.invoke(input=arguments)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\tools\structured_tool.py", line 272, in invoke
+    result = self.func(**parsed_args, **kwargs)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\tools\web_search.py", line 29, in _run
+    results = self._search(query)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\tools\web_search.py", line 63, in _search
+    raise ValueError(f"DuckDuckGo search failed: {exc}") from exc
+ValueError: DuckDuckGo search failed: https://www.bing.com/search RuntimeError: error sending request for url (https://www.bing.com/search?q=top+travel+destinations+for+culture+and+food): operation timed out
+
+Caused by:
+    operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\tools\web_search.py", line 59, in _search
+    iterator = ddgs.text(query, max_results=self.max_results)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\duckduckgo_search\duckduckgo_search.py", line 198, in text
+    raise DuckDuckGoSearchException(err)
+duckduckgo_search.exceptions.DuckDuckGoSearchException: https://www.bing.com/search RuntimeError: error sending request for url (https://www.bing.com/search?q=top+travel+destinations+for+culture+and+food): operation timed out
+
+Caused by:
+    operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\tools\tool_usage.py", line 270, in _use
+    result = tool.invoke(input=arguments)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\tools\structured_tool.py", line 272, in invoke
+    result = self.func(**parsed_args, **kwargs)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\tools\web_search.py", line 29, in _run
+    results = self._search(query)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\tools\web_search.py", line 63, in _search
+    raise ValueError(f"DuckDuckGo search failed: {exc}") from exc
+ValueError: DuckDuckGo search failed: https://www.bing.com/search RuntimeError: error sending request for url (https://www.bing.com/search?q=top+travel+destinations+for+culture+and+food): operation timed out
+
+Caused by:
+    operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\tools\web_search.py", line 59, in _search
+    iterator = ddgs.text(query, max_results=self.max_results)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\duckduckgo_search\duckduckgo_search.py", line 198, in text
+    raise DuckDuckGoSearchException(err)
+duckduckgo_search.exceptions.DuckDuckGoSearchException: https://www.bing.com/search RuntimeError: error sending request for url (https://www.bing.com/search?q=top+travel+destinations+for+culture+and+food): operation timed out
+
+Caused by:
+    operation timed out
+2025-11-20 20:58:39 | INFO | tools.web_search | DuckDuckGo search for query: top travel destinations for culture and food
+2025-11-20 21:00:05 | INFO | __main__ | Starting workshop pipeline for topic: Agentic AI Workshop on Robotics Deployments
+2025-11-20 21:00:05 | INFO | crew | Crew kickoff started for topic: Agentic AI Workshop on Robotics Deployments (provider=openrouter-liteLLM model=meta-llama/llama-3.3-70b-instruct:free base_url=https://openrouter.ai/api/v1)
+2025-11-20 21:00:05 | INFO | LiteLLM | 
+LiteLLM completion() model= meta-llama/llama-3.3-70b-instruct:free; provider = openrouter
+2025-11-20 21:00:08 | ERROR | crewai.telemetry.telemetry | HTTPSConnectionPool(host='telemetry.crewai.com', port=4319): Max retries exceeded with url: /v1/traces (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000022F4A214F50>: Failed to resolve 'telemetry.crewai.com' ([Errno 11001] getaddrinfo failed)"))
+2025-11-20 21:00:18 | ERROR | crew | Crew run failed on attempt 1/2 with overrides {}
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 208, in _make_common_sync_call
+    response = sync_httpx_client.post(
+        url=api_base,
+    ...<8 lines>...
+        logging_obj=logging_obj,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 900, in post
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 879, in post
+    response = self.client.send(req, stream=stream)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\main.py", line 2747, in completion
+    response = base_llm_http_handler.completion(
+        model=model,
+    ...<14 lines>...
+        client=client,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 511, in completion
+    response = self._make_common_sync_call(
+        sync_httpx_client=sync_httpx_client,
+    ...<7 lines>...
+        logging_obj=logging_obj,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 235, in _make_common_sync_call
+    raise self._handle_error(e=e, provider_config=provider_config)
+          ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 3582, in _handle_error
+    raise provider_config.get_error_class(
+    ...<3 lines>...
+    )
+litellm.llms.openrouter.common_utils.OpenRouterException: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 157, in run_workshop_pipeline
+    result = _execute_crew(topic, overrides, config)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 117, in _execute_crew
+    result = crew.kickoff(inputs={"topic": topic})
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\crew.py", line 706, in kickoff
+    result = self._run_sequential_process()
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\crew.py", line 823, in _run_sequential_process
+    return self._execute_tasks(self.tasks)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\crew.py", line 931, in _execute_tasks
+    task_output = task.execute_sync(
+        agent=agent_to_use,
+        context=context,
+        tools=tools_for_task,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\task.py", line 458, in execute_sync
+    return self._execute_core(agent, context, tools)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\task.py", line 591, in _execute_core
+    raise e  # Re-raise the exception after emitting the event
+    ^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\task.py", line 522, in _execute_core
+    result = agent.execute_task(
+        task=self,
+        context=context,
+        tools=tools,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 514, in execute_task
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 490, in execute_task
+    result = self._execute_without_timeout(task_prompt, task)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 598, in _execute_without_timeout
+    return self.agent_executor.invoke(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        {
+        ^
+    ...<4 lines>...
+        }
+        ^
+    )["output"]
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 188, in invoke
+    formatted_answer = self._invoke_loop()
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 287, in _invoke_loop
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 229, in _invoke_loop
+    answer = get_llm_response(
+        llm=self.llm,
+    ...<6 lines>...
+        executor_context=self,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\utilities\agent_utils.py", line 276, in get_llm_response
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\utilities\agent_utils.py", line 268, in get_llm_response
+    answer = llm.call(
+        messages,
+    ...<3 lines>...
+        response_model=response_model,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\llm.py", line 1317, in call
+    return self._handle_non_streaming_response(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        params=params,
+        ^^^^^^^^^^^^^^
+    ...<4 lines>...
+        response_model=response_model,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\llm.py", line 1077, in _handle_non_streaming_response
+    response = litellm.completion(**params)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\utils.py", line 1381, in wrapper
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\utils.py", line 1250, in wrapper
+    result = original_function(*args, **kwargs)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\main.py", line 3772, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2328, in exception_type
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2261, in exception_type
+    raise APIError(
+    ...<6 lines>...
+    )
+litellm.exceptions.APIError: litellm.APIError: APIError: OpenrouterException - [Errno 11001] getaddrinfo failed
+2025-11-20 21:00:18 | INFO | crew | Attempt 2/2 using overrides: {'provider': 'openai', 'model': 'meta-llama/llama-3.3-70b-instruct:free', 'default_headers': '[set]', 'extra_headers': '[set]'}
+2025-11-20 21:00:18 | ERROR | crewai.telemetry.telemetry | HTTPSConnectionPool(host='telemetry.crewai.com', port=4319): Max retries exceeded with url: /v1/traces (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000022F4A214CD0>: Failed to resolve 'telemetry.crewai.com' ([Errno 11001] getaddrinfo failed)"))
+2025-11-20 21:00:23 | INFO | crew | Crew kickoff started for topic: Agentic AI Workshop on Robotics Deployments (provider=openai model=meta-llama/llama-3.3-70b-instruct:free base_url=https://openrouter.ai/api/v1)
+2025-11-20 21:00:35 | ERROR | crewai.telemetry.telemetry | HTTPSConnectionPool(host='telemetry.crewai.com', port=4319): Max retries exceeded with url: /v1/traces (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000022F4A960F50>: Failed to resolve 'telemetry.crewai.com' ([Errno 11001] getaddrinfo failed)"))
+2025-11-20 21:00:36 | INFO | openai._base_client | Retrying request to /chat/completions in 0.378986 seconds
+2025-11-20 21:00:36 | INFO | openai._base_client | Retrying request to /chat/completions in 0.940836 seconds
+2025-11-20 21:00:37 | ERROR | root | Failed to connect to OpenAI API: Connection error.
+2025-11-20 21:00:37 | ERROR | root | OpenAI API call failed: Failed to connect to OpenAI API: Connection error.
+2025-11-20 21:00:37 | INFO | openai._base_client | Retrying request to /chat/completions in 0.494830 seconds
+2025-11-20 21:00:38 | INFO | openai._base_client | Retrying request to /chat/completions in 0.823234 seconds
+2025-11-20 21:00:39 | ERROR | root | Failed to connect to OpenAI API: Connection error.
+2025-11-20 21:00:39 | ERROR | root | OpenAI API call failed: Failed to connect to OpenAI API: Connection error.
+2025-11-20 21:00:39 | INFO | openai._base_client | Retrying request to /chat/completions in 0.434644 seconds
+2025-11-20 21:00:39 | INFO | openai._base_client | Retrying request to /chat/completions in 0.911946 seconds
+2025-11-20 21:00:40 | ERROR | root | Failed to connect to OpenAI API: Connection error.
+2025-11-20 21:00:40 | ERROR | root | OpenAI API call failed: Failed to connect to OpenAI API: Connection error.
+2025-11-20 21:00:40 | ERROR | crew | Crew run failed on attempt 2/2 with overrides {'provider': 'openai', 'model': 'meta-llama/llama-3.3-70b-instruct:free', 'default_headers': '[set]', 'extra_headers': '[set]'}
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\openai\_base_client.py", line 982, in request
+    response = self._client.send(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\llms\providers\openai\completion.py", line 330, in _handle_completion
+    response: ChatCompletion = self.client.chat.completions.create(**params)
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\openai\_utils\_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1189, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\openai\_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\openai\_base_client.py", line 1014, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 157, in run_workshop_pipeline
+    result = _execute_crew(topic, overrides, config)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 117, in _execute_crew
+    result = crew.kickoff(inputs={"topic": topic})
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\crew.py", line 706, in kickoff
+    result = self._run_sequential_process()
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\crew.py", line 823, in _run_sequential_process
+    return self._execute_tasks(self.tasks)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\crew.py", line 931, in _execute_tasks
+    task_output = task.execute_sync(
+        agent=agent_to_use,
+        context=context,
+        tools=tools_for_task,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\task.py", line 458, in execute_sync
+    return self._execute_core(agent, context, tools)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\task.py", line 591, in _execute_core
+    raise e  # Re-raise the exception after emitting the event
+    ^^^^^^^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\task.py", line 522, in _execute_core
+    result = agent.execute_task(
+        task=self,
+        context=context,
+        tools=tools,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 526, in execute_task
+    result = self.execute_task(task, context, tools)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 526, in execute_task
+    result = self.execute_task(task, context, tools)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 525, in execute_task
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 490, in execute_task
+    result = self._execute_without_timeout(task_prompt, task)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agent\core.py", line 598, in _execute_without_timeout
+    return self.agent_executor.invoke(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        {
+        ^
+    ...<4 lines>...
+        }
+        ^
+    )["output"]
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 188, in invoke
+    formatted_answer = self._invoke_loop()
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 299, in _invoke_loop
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 229, in _invoke_loop
+    answer = get_llm_response(
+        llm=self.llm,
+    ...<6 lines>...
+        executor_context=self,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\utilities\agent_utils.py", line 276, in get_llm_response
+    raise e
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\utilities\agent_utils.py", line 268, in get_llm_response
+    answer = llm.call(
+        messages,
+    ...<3 lines>...
+        response_model=response_model,
+    )
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\llms\providers\openai\completion.py", line 196, in call
+    return self._handle_completion(
+           ~~~~~~~~~~~~~~~~~~~~~~~^
+        params=completion_params,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        response_model=response_model,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\.venv\Lib\site-packages\crewai\llms\providers\openai\completion.py", line 402, in _handle_completion
+    raise ConnectionError(error_msg) from e
+ConnectionError: Failed to connect to OpenAI API: Connection error.
+2025-11-20 21:00:40 | ERROR | crewai.telemetry.telemetry | HTTPSConnectionPool(host='telemetry.crewai.com', port=4319): Max retries exceeded with url: /v1/traces (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000022F4A963890>: Failed to resolve 'telemetry.crewai.com' ([Errno 11001] getaddrinfo failed)"))
+2025-11-20 21:05:22 | INFO | __main__ | Starting workshop pipeline for topic: Agentic AI Workshop on Robotics Deployments
+2025-11-20 21:05:22 | INFO | crew | Crew kickoff started for topic: Agentic AI Workshop on Robotics Deployments (provider=openrouter-liteLLM model=meta-llama/llama-3.3-70b-instruct:free base_url=https://openrouter.ai/api/v1)
+2025-11-20 21:05:22 | INFO | LiteLLM | 
+LiteLLM completion() model= meta-llama/llama-3.3-70b-instruct:free; provider = openrouter
+2025-11-20 21:07:18 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 21:07:18 | INFO | LiteLLM | 
+LiteLLM completion() model= meta-llama/llama-3.3-70b-instruct:free; provider = openrouter
+2025-11-20 21:09:38 | ERROR | crew | Crew run failed on attempt 1/2 with overrides {}
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\httpx\_transports\default.py", line 127, in __iter__
+    for part in self._httpcore_stream:
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\httpcore\_sync\connection_pool.py", line 407, in __iter__
+    raise exc from None
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\httpcore\_sync\connection_pool.py", line 403, in __iter__
+    for part in self._stream:
+                ^^^^^^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\httpcore\_sync\http11.py", line 342, in __iter__
+    raise exc
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\httpcore\_sync\http11.py", line 334, in __iter__
+    for chunk in self._connection._receive_response_body(**kwargs):
+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\httpcore\_sync\http11.py", line 203, in _receive_response_body
+    event = self._receive_event(timeout=timeout)
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\httpcore\_sync\http11.py", line 217, in _receive_event
+    data = self._network_stream.read(
+        self.READ_NUM_BYTES, timeout=timeout
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\httpcore\_backends\sync.py", line 126, in read
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ReadError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 208, in _make_common_sync_call
+    response = sync_httpx_client.post(
+        url=api_base,
+    ...<8 lines>...
+        logging_obj=logging_obj,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\llms\custom_httpx\http_handler.py", line 900, in post
+    raise e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\llms\custom_httpx\http_handler.py", line 879, in post
+    response = self.client.send(req, stream=stream)
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\httpx\_client.py", line 928, in send
+    raise exc
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\httpx\_client.py", line 922, in send
+    response.read()
+    ~~~~~~~~~~~~~^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\httpx\_models.py", line 881, in read
+    self._content = b"".join(self.iter_bytes())
+                    ~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\httpx\_models.py", line 897, in iter_bytes
+    for raw_bytes in self.iter_raw():
+                     ~~~~~~~~~~~~~^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\httpx\_models.py", line 951, in iter_raw
+    for raw_stream_bytes in self.stream:
+                            ^^^^^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\httpx\_client.py", line 153, in __iter__
+    for chunk in self._stream:
+                 ^^^^^^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\httpx\_transports\default.py", line 126, in __iter__
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ReadError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\main.py", line 2747, in completion
+    response = base_llm_http_handler.completion(
+        model=model,
+    ...<14 lines>...
+        client=client,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 511, in completion
+    response = self._make_common_sync_call(
+        sync_httpx_client=sync_httpx_client,
+    ...<7 lines>...
+        logging_obj=logging_obj,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 235, in _make_common_sync_call
+    raise self._handle_error(e=e, provider_config=provider_config)
+          ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 3582, in _handle_error
+    raise provider_config.get_error_class(
+    ...<3 lines>...
+    )
+litellm.llms.openrouter.common_utils.OpenRouterException: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 157, in run_workshop_pipeline
+    result = _execute_crew(topic, overrides, config)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 117, in _execute_crew
+    result = crew.kickoff(inputs={"topic": topic})
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\crew.py", line 706, in kickoff
+    result = self._run_sequential_process()
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\crew.py", line 823, in _run_sequential_process
+    return self._execute_tasks(self.tasks)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\crew.py", line 931, in _execute_tasks
+    task_output = task.execute_sync(
+        agent=agent_to_use,
+        context=context,
+        tools=tools_for_task,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\task.py", line 458, in execute_sync
+    return self._execute_core(agent, context, tools)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\task.py", line 591, in _execute_core
+    raise e  # Re-raise the exception after emitting the event
+    ^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\task.py", line 522, in _execute_core
+    result = agent.execute_task(
+        task=self,
+        context=context,
+        tools=tools,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agent\core.py", line 514, in execute_task
+    raise e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agent\core.py", line 490, in execute_task
+    result = self._execute_without_timeout(task_prompt, task)
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agent\core.py", line 598, in _execute_without_timeout
+    return self.agent_executor.invoke(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        {
+        ^
+    ...<4 lines>...
+        }
+        ^
+    )["output"]
+    ^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agents\crew_agent_executor.py", line 188, in invoke
+    formatted_answer = self._invoke_loop()
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agents\crew_agent_executor.py", line 287, in _invoke_loop
+    raise e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agents\crew_agent_executor.py", line 229, in _invoke_loop
+    answer = get_llm_response(
+        llm=self.llm,
+    ...<6 lines>...
+        executor_context=self,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\utilities\agent_utils.py", line 276, in get_llm_response
+    raise e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\utilities\agent_utils.py", line 268, in get_llm_response
+    answer = llm.call(
+        messages,
+    ...<3 lines>...
+        response_model=response_model,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\llm.py", line 1317, in call
+    return self._handle_non_streaming_response(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        params=params,
+        ^^^^^^^^^^^^^^
+    ...<4 lines>...
+        response_model=response_model,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\llm.py", line 1077, in _handle_non_streaming_response
+    response = litellm.completion(**params)
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\utils.py", line 1381, in wrapper
+    raise e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\utils.py", line 1250, in wrapper
+    result = original_function(*args, **kwargs)
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\main.py", line 3772, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2328, in exception_type
+    raise e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2261, in exception_type
+    raise APIError(
+    ...<6 lines>...
+    )
+litellm.exceptions.APIError: litellm.APIError: APIError: OpenrouterException - [WinError 10054] An existing connection was forcibly closed by the remote host
+2025-11-20 21:09:38 | INFO | crew | Attempt 2/2 using overrides: {'provider': 'openai', 'model': 'meta-llama/llama-3.3-70b-instruct:free', 'default_headers': '[set]', 'extra_headers': '[set]'}
+2025-11-20 21:09:42 | INFO | crew | Crew kickoff started for topic: Agentic AI Workshop on Robotics Deployments (provider=openai model=meta-llama/llama-3.3-70b-instruct:free base_url=https://openrouter.ai/api/v1)
+2025-11-20 21:10:04 | INFO | openai._base_client | Retrying request to /chat/completions in 0.380961 seconds
+2025-11-20 21:15:56 | INFO | root | OpenAI API usage: {'prompt_tokens': 606, 'completion_tokens': 774, 'total_tokens': 1380}
+2025-11-20 21:15:56 | INFO | tools.web_search | DuckDuckGo search for query: top cultural destinations in Europe
+2025-11-20 21:15:56 | INFO | primp | response: https://www.bing.com/search?q=top+cultural+destinations+in+Europe 200
+2025-11-20 21:16:43 | INFO | __main__ | Starting workshop pipeline for topic: Agentic AI Workshop on Robotics Deployments
+2025-11-20 21:16:43 | INFO | crew | Crew kickoff started for topic: Agentic AI Workshop on Robotics Deployments (provider=openrouter-liteLLM model=meta-llama/llama-3.3-70b-instruct:free base_url=https://openrouter.ai/api/v1)
+2025-11-20 21:16:43 | INFO | LiteLLM | 
+LiteLLM completion() model= meta-llama/llama-3.3-70b-instruct:free; provider = openrouter
+2025-11-20 21:16:47 | ERROR | crew | Crew run failed on attempt 1/2 with overrides {}
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 208, in _make_common_sync_call
+    response = sync_httpx_client.post(
+        url=api_base,
+    ...<8 lines>...
+        logging_obj=logging_obj,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\llms\custom_httpx\http_handler.py", line 898, in post
+    raise e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\llms\custom_httpx\http_handler.py", line 880, in post
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '400 Bad Request' for url 'https://openrouter.ai/api/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\main.py", line 2747, in completion
+    response = base_llm_http_handler.completion(
+        model=model,
+    ...<14 lines>...
+        client=client,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 511, in completion
+    response = self._make_common_sync_call(
+        sync_httpx_client=sync_httpx_client,
+    ...<7 lines>...
+        logging_obj=logging_obj,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 233, in _make_common_sync_call
+    raise self._handle_error(e=e, provider_config=provider_config)
+          ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 3582, in _handle_error
+    raise provider_config.get_error_class(
+    ...<3 lines>...
+    )
+litellm.llms.openrouter.common_utils.OpenRouterException: {"error":{"message":"Provider returned error","code":400,"metadata":{"raw":"{\n  \"id\": \"oL3BxbC-2kFHot-9a1940f211d1c61e\",\n  \"error\": {\n    \"message\": \"Unable to access non-serverless model meta-llama/Llama-3.3-70B-Instruct-Turbo-Free. Please visit https://api.together.ai/models/meta-llama/Llama-3.3-70B-Instruct-Turbo-Free to create and start a new dedicated endpoint for the model.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": null,\n    \"code\": \"model_not_available\"\n  }\n}","provider_name":"Together"}},"user_id":"user_35jQLVM5Nwlp5foJhfz3tbRs3Ac"}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 157, in run_workshop_pipeline
+    result = _execute_crew(topic, overrides, config)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 117, in _execute_crew
+    result = crew.kickoff(inputs={"topic": topic})
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\crew.py", line 706, in kickoff
+    result = self._run_sequential_process()
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\crew.py", line 823, in _run_sequential_process
+    return self._execute_tasks(self.tasks)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\crew.py", line 931, in _execute_tasks
+    task_output = task.execute_sync(
+        agent=agent_to_use,
+        context=context,
+        tools=tools_for_task,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\task.py", line 458, in execute_sync
+    return self._execute_core(agent, context, tools)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\task.py", line 591, in _execute_core
+    raise e  # Re-raise the exception after emitting the event
+    ^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\task.py", line 522, in _execute_core
+    result = agent.execute_task(
+        task=self,
+        context=context,
+        tools=tools,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agent\core.py", line 514, in execute_task
+    raise e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agent\core.py", line 490, in execute_task
+    result = self._execute_without_timeout(task_prompt, task)
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agent\core.py", line 598, in _execute_without_timeout
+    return self.agent_executor.invoke(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        {
+        ^
+    ...<4 lines>...
+        }
+        ^
+    )["output"]
+    ^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agents\crew_agent_executor.py", line 188, in invoke
+    formatted_answer = self._invoke_loop()
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agents\crew_agent_executor.py", line 287, in _invoke_loop
+    raise e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agents\crew_agent_executor.py", line 229, in _invoke_loop
+    answer = get_llm_response(
+        llm=self.llm,
+    ...<6 lines>...
+        executor_context=self,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\utilities\agent_utils.py", line 276, in get_llm_response
+    raise e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\utilities\agent_utils.py", line 268, in get_llm_response
+    answer = llm.call(
+        messages,
+    ...<3 lines>...
+        response_model=response_model,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\llm.py", line 1317, in call
+    return self._handle_non_streaming_response(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        params=params,
+        ^^^^^^^^^^^^^^
+    ...<4 lines>...
+        response_model=response_model,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\llm.py", line 1077, in _handle_non_streaming_response
+    response = litellm.completion(**params)
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\utils.py", line 1381, in wrapper
+    raise e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\utils.py", line 1250, in wrapper
+    result = original_function(*args, **kwargs)
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\main.py", line 3772, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2328, in exception_type
+    raise e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2190, in exception_type
+    raise BadRequestError(
+    ...<5 lines>...
+    )
+litellm.exceptions.BadRequestError: litellm.BadRequestError: OpenrouterException - {"error":{"message":"Provider returned error","code":400,"metadata":{"raw":"{\n  \"id\": \"oL3BxbC-2kFHot-9a1940f211d1c61e\",\n  \"error\": {\n    \"message\": \"Unable to access non-serverless model meta-llama/Llama-3.3-70B-Instruct-Turbo-Free. Please visit https://api.together.ai/models/meta-llama/Llama-3.3-70B-Instruct-Turbo-Free to create and start a new dedicated endpoint for the model.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": null,\n    \"code\": \"model_not_available\"\n  }\n}","provider_name":"Together"}},"user_id":"user_35jQLVM5Nwlp5foJhfz3tbRs3Ac"}
+2025-11-20 21:16:47 | INFO | crew | Attempt 2/2 using overrides: {'provider': 'openai', 'model': 'meta-llama/llama-3.3-70b-instruct:free', 'default_headers': '[set]', 'extra_headers': '[set]'}
+2025-11-20 21:16:52 | INFO | crew | Crew kickoff started for topic: Agentic AI Workshop on Robotics Deployments (provider=openai model=meta-llama/llama-3.3-70b-instruct:free base_url=https://openrouter.ai/api/v1)
+2025-11-20 21:16:55 | INFO | openai._base_client | Retrying request to /chat/completions in 0.408640 seconds
+2025-11-20 21:16:56 | INFO | openai._base_client | Retrying request to /chat/completions in 0.782978 seconds
+2025-11-20 21:16:58 | ERROR | root | OpenAI API call failed: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '50', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1763683200000'}, 'provider_name': None}}, 'user_id': 'user_35jQLVM5Nwlp5foJhfz3tbRs3Ac'}
+2025-11-20 21:16:58 | ERROR | root | OpenAI API call failed: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '50', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1763683200000'}, 'provider_name': None}}, 'user_id': 'user_35jQLVM5Nwlp5foJhfz3tbRs3Ac'}
+2025-11-20 21:17:00 | INFO | openai._base_client | Retrying request to /chat/completions in 0.449095 seconds
+2025-11-20 21:17:01 | INFO | openai._base_client | Retrying request to /chat/completions in 0.977153 seconds
+2025-11-20 21:17:04 | ERROR | root | OpenAI API call failed: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '50', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1763683200000'}, 'provider_name': None}}, 'user_id': 'user_35jQLVM5Nwlp5foJhfz3tbRs3Ac'}
+2025-11-20 21:17:04 | ERROR | root | OpenAI API call failed: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '50', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1763683200000'}, 'provider_name': None}}, 'user_id': 'user_35jQLVM5Nwlp5foJhfz3tbRs3Ac'}
+2025-11-20 21:17:05 | INFO | openai._base_client | Retrying request to /chat/completions in 0.449936 seconds
+2025-11-20 21:17:05 | INFO | openai._base_client | Retrying request to /chat/completions in 0.933790 seconds
+2025-11-20 21:17:07 | ERROR | root | OpenAI API call failed: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1763655480000'}, 'provider_name': None}}, 'user_id': 'user_35jQLVM5Nwlp5foJhfz3tbRs3Ac'}
+2025-11-20 21:17:07 | ERROR | root | OpenAI API call failed: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1763655480000'}, 'provider_name': None}}, 'user_id': 'user_35jQLVM5Nwlp5foJhfz3tbRs3Ac'}
+2025-11-20 21:17:07 | ERROR | crew | Crew run failed on attempt 2/2 with overrides {'provider': 'openai', 'model': 'meta-llama/llama-3.3-70b-instruct:free', 'default_headers': '[set]', 'extra_headers': '[set]'}
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 157, in run_workshop_pipeline
+    result = _execute_crew(topic, overrides, config)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 117, in _execute_crew
+    result = crew.kickoff(inputs={"topic": topic})
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\crew.py", line 706, in kickoff
+    result = self._run_sequential_process()
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\crew.py", line 823, in _run_sequential_process
+    return self._execute_tasks(self.tasks)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\crew.py", line 931, in _execute_tasks
+    task_output = task.execute_sync(
+        agent=agent_to_use,
+        context=context,
+        tools=tools_for_task,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\task.py", line 458, in execute_sync
+    return self._execute_core(agent, context, tools)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\task.py", line 591, in _execute_core
+    raise e  # Re-raise the exception after emitting the event
+    ^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\task.py", line 522, in _execute_core
+    result = agent.execute_task(
+        task=self,
+        context=context,
+        tools=tools,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agent\core.py", line 526, in execute_task
+    result = self.execute_task(task, context, tools)
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agent\core.py", line 526, in execute_task
+    result = self.execute_task(task, context, tools)
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agent\core.py", line 525, in execute_task
+    raise e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agent\core.py", line 490, in execute_task
+    result = self._execute_without_timeout(task_prompt, task)
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agent\core.py", line 598, in _execute_without_timeout
+    return self.agent_executor.invoke(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        {
+        ^
+    ...<4 lines>...
+        }
+        ^
+    )["output"]
+    ^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agents\crew_agent_executor.py", line 188, in invoke
+    formatted_answer = self._invoke_loop()
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agents\crew_agent_executor.py", line 299, in _invoke_loop
+    raise e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agents\crew_agent_executor.py", line 229, in _invoke_loop
+    answer = get_llm_response(
+        llm=self.llm,
+    ...<6 lines>...
+        executor_context=self,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\utilities\agent_utils.py", line 276, in get_llm_response
+    raise e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\utilities\agent_utils.py", line 268, in get_llm_response
+    answer = llm.call(
+        messages,
+    ...<3 lines>...
+        response_model=response_model,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\llms\providers\openai\completion.py", line 196, in call
+    return self._handle_completion(
+           ~~~~~~~~~~~~~~~~~~~~~~~^
+        params=completion_params,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        response_model=response_model,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\llms\providers\openai\completion.py", line 414, in _handle_completion
+    raise e from e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\llms\providers\openai\completion.py", line 330, in _handle_completion
+    response: ChatCompletion = self.client.chat.completions.create(**params)
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\openai\_utils\_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\openai\resources\chat\completions\completions.py", line 1189, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\openai\_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\openai\_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1763655480000'}, 'provider_name': None}}, 'user_id': 'user_35jQLVM5Nwlp5foJhfz3tbRs3Ac'}
+2025-11-20 21:21:47 | INFO | main | Starting workshop pipeline for topic: Designing a Multi-Agent Workshop for Cloud-Native Deployments
+2025-11-20 21:21:47 | INFO | crew | Crew kickoff started for topic: Designing a Multi-Agent Workshop for Cloud-Native Deployments (provider=openrouter-liteLLM model=meta-llama/llama-3.3-70b-instruct:free base_url=https://openrouter.ai/api/v1)
+2025-11-20 21:21:47 | INFO | LiteLLM | 
+LiteLLM completion() model= meta-llama/llama-3.3-70b-instruct:free; provider = openrouter
+2025-11-20 21:21:52 | ERROR | crew | Crew run failed on attempt 1/2 with overrides {}
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 208, in _make_common_sync_call
+    response = sync_httpx_client.post(
+        url=api_base,
+    ...<8 lines>...
+        logging_obj=logging_obj,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\llms\custom_httpx\http_handler.py", line 898, in post
+    raise e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\llms\custom_httpx\http_handler.py", line 880, in post
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '429 Too Many Requests' for url 'https://openrouter.ai/api/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\main.py", line 2747, in completion
+    response = base_llm_http_handler.completion(
+        model=model,
+    ...<14 lines>...
+        client=client,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 511, in completion
+    response = self._make_common_sync_call(
+        sync_httpx_client=sync_httpx_client,
+    ...<7 lines>...
+        logging_obj=logging_obj,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 233, in _make_common_sync_call
+    raise self._handle_error(e=e, provider_config=provider_config)
+          ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 3582, in _handle_error
+    raise provider_config.get_error_class(
+    ...<3 lines>...
+    )
+litellm.llms.openrouter.common_utils.OpenRouterException: {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1763683200000"},"provider_name":null}},"user_id":"user_35jQLVM5Nwlp5foJhfz3tbRs3Ac"}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 157, in run_workshop_pipeline
+    result = _execute_crew(topic, overrides, config)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 117, in _execute_crew
+    result = crew.kickoff(inputs={"topic": topic})
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\crew.py", line 706, in kickoff
+    result = self._run_sequential_process()
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\crew.py", line 823, in _run_sequential_process
+    return self._execute_tasks(self.tasks)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\crew.py", line 931, in _execute_tasks
+    task_output = task.execute_sync(
+        agent=agent_to_use,
+        context=context,
+        tools=tools_for_task,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\task.py", line 458, in execute_sync
+    return self._execute_core(agent, context, tools)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\task.py", line 591, in _execute_core
+    raise e  # Re-raise the exception after emitting the event
+    ^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\task.py", line 522, in _execute_core
+    result = agent.execute_task(
+        task=self,
+        context=context,
+        tools=tools,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agent\core.py", line 514, in execute_task
+    raise e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agent\core.py", line 490, in execute_task
+    result = self._execute_without_timeout(task_prompt, task)
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agent\core.py", line 598, in _execute_without_timeout
+    return self.agent_executor.invoke(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        {
+        ^
+    ...<4 lines>...
+        }
+        ^
+    )["output"]
+    ^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agents\crew_agent_executor.py", line 188, in invoke
+    formatted_answer = self._invoke_loop()
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agents\crew_agent_executor.py", line 287, in _invoke_loop
+    raise e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agents\crew_agent_executor.py", line 229, in _invoke_loop
+    answer = get_llm_response(
+        llm=self.llm,
+    ...<6 lines>...
+        executor_context=self,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\utilities\agent_utils.py", line 276, in get_llm_response
+    raise e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\utilities\agent_utils.py", line 268, in get_llm_response
+    answer = llm.call(
+        messages,
+    ...<3 lines>...
+        response_model=response_model,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\llm.py", line 1317, in call
+    return self._handle_non_streaming_response(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        params=params,
+        ^^^^^^^^^^^^^^
+    ...<4 lines>...
+        response_model=response_model,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\llm.py", line 1077, in _handle_non_streaming_response
+    response = litellm.completion(**params)
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\utils.py", line 1381, in wrapper
+    raise e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\utils.py", line 1250, in wrapper
+    result = original_function(*args, **kwargs)
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\main.py", line 3772, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2328, in exception_type
+    raise e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2234, in exception_type
+    raise RateLimitError(
+    ...<5 lines>...
+    )
+litellm.exceptions.RateLimitError: litellm.RateLimitError: RateLimitError: OpenrouterException - {"error":{"message":"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day","code":429,"metadata":{"headers":{"X-RateLimit-Limit":"50","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"1763683200000"},"provider_name":null}},"user_id":"user_35jQLVM5Nwlp5foJhfz3tbRs3Ac"}
+2025-11-20 21:21:52 | INFO | crew | Attempt 2/2 using overrides: {'provider': 'openai', 'model': 'meta-llama/llama-3.3-70b-instruct:free', 'default_headers': '[set]', 'extra_headers': '[set]'}
+2025-11-20 21:21:58 | INFO | crew | Crew kickoff started for topic: Designing a Multi-Agent Workshop for Cloud-Native Deployments (provider=openai model=meta-llama/llama-3.3-70b-instruct:free base_url=https://openrouter.ai/api/v1)
+2025-11-20 21:22:03 | INFO | openai._base_client | Retrying request to /chat/completions in 0.402517 seconds
+2025-11-20 21:22:04 | INFO | openai._base_client | Retrying request to /chat/completions in 0.758886 seconds
+2025-11-20 21:22:06 | ERROR | root | OpenAI API call failed: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '50', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1763683200000'}, 'provider_name': None}}, 'user_id': 'user_35jQLVM5Nwlp5foJhfz3tbRs3Ac'}
+2025-11-20 21:22:06 | ERROR | root | OpenAI API call failed: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '50', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1763683200000'}, 'provider_name': None}}, 'user_id': 'user_35jQLVM5Nwlp5foJhfz3tbRs3Ac'}
+2025-11-20 21:22:08 | INFO | openai._base_client | Retrying request to /chat/completions in 0.446536 seconds
+2025-11-20 21:22:09 | INFO | openai._base_client | Retrying request to /chat/completions in 0.854797 seconds
+2025-11-20 21:22:11 | ERROR | root | OpenAI API call failed: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1763655780000'}, 'provider_name': None}}, 'user_id': 'user_35jQLVM5Nwlp5foJhfz3tbRs3Ac'}
+2025-11-20 21:22:11 | ERROR | root | OpenAI API call failed: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1763655780000'}, 'provider_name': None}}, 'user_id': 'user_35jQLVM5Nwlp5foJhfz3tbRs3Ac'}
+2025-11-20 21:22:11 | INFO | openai._base_client | Retrying request to /chat/completions in 0.412909 seconds
+2025-11-20 21:22:12 | INFO | openai._base_client | Retrying request to /chat/completions in 0.989190 seconds
+2025-11-20 21:22:13 | ERROR | root | OpenAI API call failed: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1763655780000'}, 'provider_name': None}}, 'user_id': 'user_35jQLVM5Nwlp5foJhfz3tbRs3Ac'}
+2025-11-20 21:22:13 | ERROR | root | OpenAI API call failed: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1763655780000'}, 'provider_name': None}}, 'user_id': 'user_35jQLVM5Nwlp5foJhfz3tbRs3Ac'}
+2025-11-20 21:22:13 | ERROR | crew | Crew run failed on attempt 2/2 with overrides {'provider': 'openai', 'model': 'meta-llama/llama-3.3-70b-instruct:free', 'default_headers': '[set]', 'extra_headers': '[set]'}
+Traceback (most recent call last):
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 157, in run_workshop_pipeline
+    result = _execute_crew(topic, overrides, config)
+  File "C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\crew.py", line 117, in _execute_crew
+    result = crew.kickoff(inputs={"topic": topic})
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\crew.py", line 706, in kickoff
+    result = self._run_sequential_process()
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\crew.py", line 823, in _run_sequential_process
+    return self._execute_tasks(self.tasks)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\crew.py", line 931, in _execute_tasks
+    task_output = task.execute_sync(
+        agent=agent_to_use,
+        context=context,
+        tools=tools_for_task,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\task.py", line 458, in execute_sync
+    return self._execute_core(agent, context, tools)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\task.py", line 591, in _execute_core
+    raise e  # Re-raise the exception after emitting the event
+    ^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\task.py", line 522, in _execute_core
+    result = agent.execute_task(
+        task=self,
+        context=context,
+        tools=tools,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agent\core.py", line 526, in execute_task
+    result = self.execute_task(task, context, tools)
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agent\core.py", line 526, in execute_task
+    result = self.execute_task(task, context, tools)
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agent\core.py", line 525, in execute_task
+    raise e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agent\core.py", line 490, in execute_task
+    result = self._execute_without_timeout(task_prompt, task)
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agent\core.py", line 598, in _execute_without_timeout
+    return self.agent_executor.invoke(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        {
+        ^
+    ...<4 lines>...
+        }
+        ^
+    )["output"]
+    ^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agents\crew_agent_executor.py", line 188, in invoke
+    formatted_answer = self._invoke_loop()
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agents\crew_agent_executor.py", line 299, in _invoke_loop
+    raise e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\agents\crew_agent_executor.py", line 229, in _invoke_loop
+    answer = get_llm_response(
+        llm=self.llm,
+    ...<6 lines>...
+        executor_context=self,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\utilities\agent_utils.py", line 276, in get_llm_response
+    raise e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\utilities\agent_utils.py", line 268, in get_llm_response
+    answer = llm.call(
+        messages,
+    ...<3 lines>...
+        response_model=response_model,
+    )
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\llms\providers\openai\completion.py", line 196, in call
+    return self._handle_completion(
+           ~~~~~~~~~~~~~~~~~~~~~~~^
+        params=completion_params,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        response_model=response_model,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\llms\providers\openai\completion.py", line 414, in _handle_completion
+    raise e from e
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\crewai\llms\providers\openai\completion.py", line 330, in _handle_completion
+    response: ChatCompletion = self.client.chat.completions.create(**params)
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\openai\_utils\_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\openai\resources\chat\completions\completions.py", line 1189, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\openai\_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\openai\_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1763655780000'}, 'provider_name': None}}, 'user_id': 'user_35jQLVM5Nwlp5foJhfz3tbRs3Ac'}
