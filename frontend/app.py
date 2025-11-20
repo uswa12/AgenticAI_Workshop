@@ -1,6 +1,7 @@
 """Streamlit frontend for the Agentic AI Workshop pipeline."""
 from __future__ import annotations
 
+import os
 import sys
 from pathlib import Path
 
@@ -12,9 +13,16 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.append(str(PROJECT_ROOT))
 
-from main import run_pipeline  # noqa: E402  # pylint: disable=wrong-import-position
-
+# Load environment variables - try .env file first (local), then Streamlit secrets (cloud)
 load_dotenv()
+
+# Load Streamlit secrets into environment variables
+if hasattr(st, 'secrets'):
+    for key, value in st.secrets.items():
+        if key not in os.environ:
+            os.environ[key] = str(value)
+
+from main import run_pipeline  # noqa: E402  # pylint: disable=wrong-import-position
 
 st.set_page_config(page_title="Agentic AI Workshop", page_icon="🧠", layout="wide")
 

@@ -2871,3 +2871,247 @@ Traceback (most recent call last):
   File "C:\Users\EliteBook\AppData\Roaming\Python\Python313\site-packages\openai\_base_client.py", line 1047, in request
     raise self._make_status_error_from_response(err.response) from None
 openai.RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1763655780000'}, 'provider_name': None}}, 'user_id': 'user_35jQLVM5Nwlp5foJhfz3tbRs3Ac'}
+2025-11-20 21:32:01 | INFO | main | Starting workshop pipeline for topic: Designing a Multi-Agent Workshop for Cloud-Native Deployments
+2025-11-20 21:32:01 | INFO | crew | Crew kickoff started for topic: Designing a Multi-Agent Workshop for Cloud-Native Deployments (provider=openrouter-liteLLM model=mistralai/mistral-large base_url=https://openrouter.ai/api/v1)
+2025-11-20 21:32:01 | INFO | LiteLLM | 
+LiteLLM completion() model= mistralai/mistral-large; provider = openrouter
+2025-11-20 21:32:22 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 21:32:23 | INFO | LiteLLM | 
+LiteLLM completion() model= mistralai/mistral-large; provider = openrouter
+2025-11-20 21:32:27 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 21:32:27 | INFO | tools.web_search | DuckDuckGo search for query: distance and public transport time from Belém Tower to Alfama District Lisbon
+2025-11-20 21:32:29 | INFO | primp | response: https://www.bing.com/search?q=distance+and+public+transport+time+from+Bel%C3%A9m+Tower+to+Alfama+District+Lisbon 200
+2025-11-20 21:32:29 | INFO | LiteLLM | 
+LiteLLM completion() model= mistralai/mistral-large; provider = openrouter
+2025-11-20 21:33:18 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 21:33:18 | INFO | LiteLLM | 
+LiteLLM completion() model= mistralai/mistral-large; provider = openrouter
+2025-11-20 21:33:44 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 21:33:44 | INFO | LiteLLM | 
+LiteLLM completion() model= mistralai/mistral-large; provider = openrouter
+2025-11-20 21:34:03 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 21:34:03 | INFO | LiteLLM | 
+LiteLLM completion() model= mistralai/mistral-large; provider = openrouter
+2025-11-20 21:34:04 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 21:34:04 | INFO | tools.web_search | DuckDuckGo search for query: best season to visit Lisbon Portugal
+2025-11-20 21:34:05 | INFO | primp | response: https://www.bing.com/search?q=best+season+to+visit+Lisbon+Portugal 200
+2025-11-20 21:34:07 | INFO | LiteLLM | 
+LiteLLM completion() model= mistralai/mistral-large; provider = openrouter
+2025-11-20 21:34:09 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 21:34:09 | INFO | tools.web_search | DuckDuckGo search for query: Lisbon best season to visit short
+2025-11-20 21:34:10 | INFO | primp | response: https://www.bing.com/search?q=Lisbon+best+season+to+visit+short 200
+2025-11-20 21:34:10 | INFO | LiteLLM | 
+LiteLLM completion() model= mistralai/mistral-large; provider = openrouter
+2025-11-20 21:34:14 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 21:34:14 | INFO | tools.web_search | DuckDuckGo search for query: Lisbon best time to visit short 2025
+2025-11-20 21:34:15 | INFO | primp | response: https://www.bing.com/search?q=Lisbon+best+time+to+visit+short+2025 200
+2025-11-20 21:34:16 | INFO | LiteLLM | 
+LiteLLM completion() model= mistralai/mistral-large; provider = openrouter
+2025-11-20 21:34:19 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 21:34:19 | INFO | tools.web_search | DuckDuckGo search for query: Lisbon best season to visit concise
+2025-11-20 21:34:23 | INFO | primp | response: https://www.bing.com/search?q=Lisbon+best+season+to+visit+concise 200
+2025-11-20 21:34:24 | INFO | LiteLLM | 
+LiteLLM completion() model= mistralai/mistral-large; provider = openrouter
+2025-11-20 21:34:26 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 21:34:26 | INFO | tools.web_search | DuckDuckGo search for query: Lisbon best time to visit short
+2025-11-20 21:34:28 | INFO | primp | response: https://www.bing.com/search?q=Lisbon+best+time+to+visit+short 200
+2025-11-20 21:34:29 | INFO | LiteLLM | 
+LiteLLM completion() model= mistralai/mistral-large; provider = openrouter
+2025-11-20 21:34:31 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 21:34:31 | INFO | tools.web_search | DuckDuckGo search for query: Lisbon top 2 attractions concise
+2025-11-20 21:34:33 | INFO | primp | response: https://www.bing.com/search?q=Lisbon+top+2+attractions+concise 200
+2025-11-20 21:34:33 | INFO | LiteLLM | 
+LiteLLM completion() model= mistralai/mistral-large; provider = openrouter
+2025-11-20 21:34:35 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 21:34:35 | INFO | tools.web_search | DuckDuckGo search for query: Lisbon top 2 attractions short description
+2025-11-20 21:34:37 | INFO | primp | response: https://www.bing.com/search?q=Lisbon+top+2+attractions+short+description 200
+2025-11-20 21:34:37 | INFO | LiteLLM | 
+LiteLLM completion() model= mistralai/mistral-large; provider = openrouter
+2025-11-20 21:34:40 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 21:34:40 | INFO | tools.web_search | DuckDuckGo search for query: Belém Tower and Jerónimos Monastery short description
+2025-11-20 21:34:41 | INFO | primp | response: https://www.bing.com/search?q=Bel%C3%A9m+Tower+and+Jer%C3%B3nimos+Monastery+short+description 200
+2025-11-20 21:34:41 | INFO | LiteLLM | 
+LiteLLM completion() model= mistralai/mistral-large; provider = openrouter
+2025-11-20 21:35:03 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 21:35:03 | INFO | LiteLLM | 
+LiteLLM completion() model= mistralai/mistral-large; provider = openrouter
+2025-11-20 21:35:12 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 21:35:12 | INFO | tools.web_search | DuckDuckGo search for query: Jerónimos Monastery opening hours 2024 ticket price
+2025-11-20 21:35:14 | INFO | primp | response: https://www.bing.com/search?q=Jer%C3%B3nimos+Monastery+opening+hours+2024+ticket+price 200
+2025-11-20 21:35:14 | INFO | LiteLLM | 
+LiteLLM completion() model= mistralai/mistral-large; provider = openrouter
+2025-11-20 21:35:15 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 21:35:15 | INFO | LiteLLM | 
+LiteLLM completion() model= mistralai/mistral-large; provider = openrouter
+2025-11-20 21:35:26 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 21:35:26 | INFO | LiteLLM | 
+LiteLLM completion() model= mistralai/mistral-large; provider = openrouter
+2025-11-20 21:35:29 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 21:35:29 | INFO | LiteLLM | 
+LiteLLM completion() model= mistralai/mistral-large; provider = openrouter
+2025-11-20 21:35:31 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 21:35:32 | INFO | LiteLLM | 
+LiteLLM completion() model= mistralai/mistral-large; provider = openrouter
+2025-11-20 21:35:36 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 21:35:36 | INFO | LiteLLM | 
+LiteLLM completion() model= mistralai/mistral-large; provider = openrouter
+2025-11-20 21:35:40 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 21:35:40 | INFO | LiteLLM | 
+LiteLLM completion() model= mistralai/mistral-large; provider = openrouter
+2025-11-20 21:35:50 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 21:35:50 | INFO | tools.web_search | DuckDuckGo search for query: Jerónimos Monastery opening hours and ticket prices 2024
+2025-11-20 21:35:50 | INFO | primp | response: https://www.bing.com/search?q=Jer%C3%B3nimos+Monastery+opening+hours+and+ticket+prices+2024 200
+2025-11-20 21:35:50 | INFO | LiteLLM | 
+LiteLLM completion() model= mistralai/mistral-large; provider = openrouter
+2025-11-20 21:36:07 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 21:36:08 | INFO | LiteLLM | 
+LiteLLM completion() model= mistralai/mistral-large; provider = openrouter
+2025-11-20 21:36:32 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 21:36:32 | INFO | LiteLLM | 
+LiteLLM completion() model= mistralai/mistral-large; provider = openrouter
+2025-11-20 21:36:43 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 21:37:22 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: cpu
+2025-11-20 21:37:22 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-11-20 21:38:04 | INFO | faiss.loader | Loading faiss with AVX2 support.
+2025-11-20 21:38:05 | INFO | faiss.loader | Successfully loaded faiss with AVX2 support.
+2025-11-20 21:38:05 | INFO | tools.rag_tool | Loaded FAISS vector store from C:\Users\EliteBook\OneDrive\Desktop\workshop\AgenticAI_Workshop\rag\vectorstore using embedding model sentence-transformers/all-MiniLM-L6-v2
+2025-11-20 21:38:06 | INFO | tools.rag_tool | Local RAG served 4 snippets for query 'Task 4 description in Lisbon itinerary or related workshop materials'
+2025-11-20 21:38:06 | INFO | LiteLLM | 
+LiteLLM completion() model= mistralai/mistral-large; provider = openrouter
+2025-11-20 21:38:26 | INFO | LiteLLM | Wrapper: Completed Call, calling success_handler
+2025-11-20 21:38:26 | INFO | crew | Task 'Travel Planning' output:
+3-Day Lisbon Itinerary (Spring, Mid-Range Budget)**
+**Destination**: Lisbon, Portugal
+**Duration**: 3 days
+**Budget**: ~€70/day (€210 total)
+**Interests**: History, photography, local food, hidden gems
+**Transport**: Walking + public transport (€5–10/day)
+**Weather**: Spring (18–22°C, low rain).
+
+---
+
+### **Day 1: Alfama & Historic Lisbon**
+**Theme**: *Medieval charm, Fado music, and panoramic views.*
+
+#### **Morning (8:00 AM – 12:00 PM)**
+- **Activity**: **Alfama District Walking Tour**
+  - **Highlights**:
+    - **Sé Cathedral** (€5 entry, 9:00 AM–7:00 PM).
+    - **Miradouro de Santa Luzia** (free viewpoint, best for photos).
+    - **Fado Museum** (€5, 10:00 AM–6:00 PM).
+  - **Transport**: Walk (all sites within 10 mins of each other).
+  - **Time**: 3 hours.
+  - **Breakfast**: *Manteigaria Silva* (€5; try *pastel de nata* + coffee).
+
+#### **Afternoon (12:30 PM – 5:00 PM)**
+- **Activity**: **Castle of São Jorge** (€15, 9:00 AM–6:00 PM) + **Igreja do Carmo** (free ruins).
+  - **Transport**: Walk uphill (15 mins) or take **Bus 737** (€2, 5 mins).
+  - **Lunch**: *Tasca do Chico* (€12; order *bacalhau à brás*).
+  - **Hidden Gem**: *Feira da Ladra* (flea market, free; Tuesdays/Saturdays).
+
+#### **Evening (6:00 PM – 10:00 PM)**
+- **Activity**: Sunset at **Miradouro da Senhora do Monte** (free, best city view).
+  - **Transport**: **Uber** (€6) or **Bus 735** (€2, 15 mins).
+  - **Dinner**: *Cervejaria Ramiro* (€25; famous for garlic shrimp).
+  - **Nightcap**: Fado show at *Clube de Fado* (€20, book ahead).
+
+---
+### **Day 2: Belém & LX Factory**
+**Theme**: *Age of Discoveries, pastries, and hipster vibes.*
+
+#### **Morning (8:30 AM – 12:00 PM)**
+- **Activity**: **Belém District** (UNESCO sites).
+  - **Highlights**:
+    - **Belém Tower** (€8, 10:00 AM–5:30 PM).
+    - **Jerónimos Monastery** (€10, 9:
+2025-11-20 21:38:26 | INFO | crew | Task 'Quick Travel Research' output:
+- **Best visiting season**: Spring (March–May) or fall (September–October) for mild weather and fewer crowds.
+- **2 recommended attractions**:
+  - **Belém Tower**: 16th-century fortress on the Tagus River, UNESCO-listed, iconic symbol of Portugal’s Age of Discoveries.
+  - **Jerónimos Monastery**: Stunning Manueline architecture, UNESCO site, and resting place of Vasco da Gama.
+- **1 local food suggestion**: *Pastéis de nata* (custard tart) – best tried fresh at *Pastéis de Belém*.
+- **Budget range**: €50–€70/day (budget traveler), covering hostels, public transport, and affordable meals.
+2025-11-20 21:38:26 | INFO | crew | Task 'Travel Itinerary Authoring' output:
+---
+# **3-Day Lisbon Itinerary (Spring, Mid-Range Budget)**
+
+---
+
+## **Day 2: Belém & LX Factory**
+**Theme**: *Age of Discoveries, pastries, and hipster vibes.*
+
+### **Morning (8:30 AM – 12:00 PM)**
+- **Activity**: **Belém District** (UNESCO sites)
+  - **Highlights**:
+    - **Belém Tower** (€8, 10:00 AM–5:30 PM; iconic 16th-century fortress on the Tagus River).
+    - **Jerónimos Monastery** (€10, 9:30 AM–6:00 PM; stunning Manueline architecture, Vasco da Gama’s tomb).
+    - **Monument to the Discoveries** (€6, 10:00 AM–6:00 PM; panoramic views from the top).
+  - **Transport**: Tram 15E (€3, 20 mins from city center) or Uber (€10).
+  - **Breakfast**: *Pastéis de Belém* (€3; original *pastéis de nata*—try with cinnamon!).
+
+### **Afternoon (12:30 PM – 5:00 PM)**
+- **Activity**: **LX Factory** (hipster creative hub under a bridge)
+  - **Highlights**:
+    - Street art, boutique shops, and bookstores (e.g., *Ler Devagar*).
+    - **Lunch**: *LX Market* (€12; food hall with diverse options like *francesinha* sandwiches).
+    - **Hidden Gem**: *Rio Maravilha* rooftop bar (€8 for a drink with river views).
+  - **Transport**: Uber (€8) or Bus 720 (€2, 15 mins from Belém).
+
+### **Evening (6:00 PM – 10:00 PM)**
+- **Activity**: **Time Out Market** (food hall with 40+ vendors)
+  - **Dinner**: Try *croquettes* at *Croqueteria* (€5) or *seafood rice* at *Mariscaria Azul* (€18).
+  - **Nightcap**: Ginjinha bar (€3; cherry liqueur shot at *A Ginjinha*).
+  - **Transport**: Metro to Cais do Sodré (€1.50).
+
+---
+
+## **Day 3: Sintra & Cascais Day Trip**
+**Theme**: *Fairytale palaces and coastal charm.*
+
+### **Morning (8:00 AM – 12:00 PM)**
+- **Activity**: **Sintra** (UNESCO-listed romantic town)
+  - **Highlights**:
+    - **Pena Palace** (€14, 9:30 AM–6:30 PM; colorful hilltop palace with forest views).
+    - **Quinta da Regaleira** (€10, 9:30 AM–6:30 PM; mystical gardens with tunnels and a initiation well).
+  - **Transport**: Train from Rossio Station to Sintra (€4.60 round-trip, 40 mins). Use **Bus 434** (€5 round-trip) to shuttle between palaces.
+  - **Breakfast**: *Piriquita* (€6; try *travesseiro*—almond pastry).
+
+### **Afternoon (12:30 PM – 5:00 PM)**
+- **Activity**: **Cascais** (seaside town)
+  - **Highlights**:
+    - **Boca do Inferno** (free
+2025-11-20 21:38:26 | INFO | crew | Task 'Task 4' output:
+---
+
+### **Task 4: Lisbon Hidden Gems Photography Challenge & Local Food Workshop**
+**Theme**: *Uncover Lisbon’s secrets through your lens and taste buds.*
+
+#### **Objective**:
+Extend your Lisbon adventure with a **self-guided photography challenge** and a **hands-on local food workshop**. This task is designed for travelers who want to dive deeper into Lisbon’s culture, practice their photography skills, and bring home a taste of Portugal—literally!
+
+---
+
+#### **Part 1: Hidden Gems Photography Challenge (Half-Day, €10–€15)**
+**Goal**: Capture Lisbon’s lesser-known but visually stunning spots. Share your best shots with a unique hashtag (#LisbonHiddenGemsSpring2025) for a chance to be featured in a travel blog!
+
+**Itinerary**:
+1. **Miradouro da Graça** (Free):
+   - A quieter alternative to Santa Luzia, offering panoramic views of the castle and river. Best visited at **sunrise or late afternoon** for golden-hour lighting.
+   - *Photography Tip*: Frame the castle through the arches of the viewpoint’s terrace.
+
+2. **Rua Nova do Carvalho (Pink Street)** (Free):
+   - Lisbon’s vibrant nightlife hub by day is a pastel-pink street lined with historic buildings. Visit **early morning** to avoid crowds.
+   - *Photography Tip*: Use a low angle to emphasize the street’s curve and colors.
+
+3. **Livaria Bertrand** (Free entry, €5 if you buy a book):
+   - The world’s oldest operating bookstore (since 1732). Capture its **neoclassical façade** and wooden interiors.
+   - *Photography Tip*: Ask permission before photographing inside; focus on the ornate ceiling.
+
+4. **Jardim do Torel** (Free):
+   - A hidden garden with peacocks, tiled benches, and a serene atmosphere. Perfect for **macro photography** of azulejo tiles or candid shots of locals.
+   - *Transport*: Walk from Pink Street (15 mins) or take Tram 28 (€3).
+
+5. **Submission**:
+   - Post your 3 best photos on Instagram or a blog with the hashtag **#LisbonHiddenGemsSpring2025** and tag @ExploreLisbon (hypothetical handle).
+   - *Bonus*: Include
+2025-11-20 21:38:26 | INFO | crew | Crew completed with final output length=2018 characters
